@@ -1,0 +1,113 @@
+body {
+  background-color:#FFFFFF;
+
+}
+
+
+.title{
+  color:#00cccc;
+  
+}
+.balloon {
+position: relative ;
+padding: 10px;
+width: 100px;
+height: 100px;
+line-height: 100px;
+border-radius: 50%;
+text-align: center;
+letter-spacing: 0.2em;
+font-size: 14px;
+background-color: #00cccc;
+}
+
+p{
+  color: #ffffff;
+}
+
+.balloon::before {
+content: '';
+position: absolute;
+display: block;
+width: 0;
+height: 0;
+right: 2px;
+bottom: 2px;
+border-left: 20px solid #00cccc;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;
+transform: rotate(45deg);
+}
+
+.container{
+  margin:auto;
+
+}
+  
+.login-box {
+  background-color: 	#ffffff;
+}
+
+.login-header {
+  background-color: 	#ffffff;
+}
+
+.login-body {
+  background-color:	#ffffff;
+}
+
+
+
+// .header {
+//   .logo {
+//       width: 120px;
+//       height: 82px;
+//   }
+// }
+
+// .headline {
+//   .caption {
+//     position: relative;
+//     width: 350px;
+//     .image {
+//       img {
+//     width: 100%;
+//       }
+//     }
+//     .title {
+//       width: 100%;
+//       position: absolute;
+//       bottom: 0;
+//       left: 0;
+//       background-color: rgba(0, 0, 0, 0.6);
+//       h1 {
+//     color: #fff;
+//     font-size: 1.2em;
+//       }
+//     }
+//     .body {
+//       font-size: 0.8em;
+//     }
+//   }
+// }
+
+// .posts {
+//   .post {
+//     .date {
+//       font-size: 0.6em;
+//       color: #999999;
+//     }
+//     .title {
+//       font-size: 1.2em;
+//       font-weight: bold;
+//     }
+//     .body {
+//       font-size: 0.8em;
+//     }
+//     .image {
+//       img {
+//     width: 250px;
+//       }
+//     }
+//   }
+// }
