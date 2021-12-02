@@ -36,4 +36,5 @@ Route::group(['prefix' => 'bought', 'middleware' => 'auth'], function() {
      Route::post('bought_list', 'Admin\BoughtController@bought_list')->middleware('auth');
      Route::get('bought_create', 'Admin\BoughtController@bought_add')->middleware('auth');
      Route::post('bought_create', 'Admin\BoughtController@bought_create')->middleware('auth');
+     Route::get('bought_list', 'Admin\BoughtController@index')->middleware('auth'); //買ったものの実際のリスト表示のルーティング
 });
