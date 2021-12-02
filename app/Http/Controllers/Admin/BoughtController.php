@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+// 以下を追記することでBought Modelが扱えるようになる
+use App\Bought;
+
 class BoughtController extends Controller
 {
    public function bought_list_add()
@@ -51,5 +54,21 @@ class BoughtController extends Controller
       
       return redirect('bought/bought_create');
   }
+      
+      
+      public function index(Request $request)
+  {
+      $cond_name = $request->cond_name;
+      if ($cond_name != '') {
+          // キーワード検索されたら検索結果を取得する
+          $posts = Bought::where('bought_name', $cond_name)->get();
+      } else {
+          // それ以外はすべてのニュースを取得する
+          $posts = Bought::all();
+      }
+      return view('bought.bought_list', ['posts' => $posts, 'cond_name' => $cond_name]);
+  }
+  
+  
   
 }
