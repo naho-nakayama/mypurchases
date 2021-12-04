@@ -87,6 +87,12 @@
                         </ul>
                     @endif
                     <div class="form-group row">
+                        <label class="col-md-2" for="bought_sitename">日付は？</label>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" name="date" value="{{ old('date',  Carbon\Carbon::today()->format('Y-m-d')) }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-md-2" for="name">買ったものは？</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">

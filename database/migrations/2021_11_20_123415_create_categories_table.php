@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateCategoryTable extends Migration
             $table->string('name'); // カテゴリの名前を保存するカラム
             $table->timestamps();
         });
-        Schema::rename('category', 'categories');
+        
     }
 
     /**
@@ -28,7 +28,7 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
-        Schema::rename('categories', 'category');
+        Schema::dropIfExists('categories');
+        
     }
 }

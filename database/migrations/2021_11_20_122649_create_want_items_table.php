@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotBuyTable extends Migration
+class CreateWantItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class CreateNotBuyTable extends Migration
              $table->integer('user_id'); // ユーザー情報を紐付けるカラム
             $table->timestamps();
         });
-         Schema::rename('not_buy', 'want_items');
+         
     }
 
     /**
@@ -32,7 +32,7 @@ class CreateNotBuyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('not_buy');
-        Schema::rename('want_items', 'not_buy');
+        Schema::dropIfExists('want_items');
+        
     }
 }

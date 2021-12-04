@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 // 以下を追記することでBought Modelが扱えるようになる
 use App\Bought_item;
+//以下の記述でララベルのAuth機能が使えるように？
+use Auth;
 
 class Bought_itemController extends Controller
 {
@@ -50,6 +52,12 @@ class Bought_itemController extends Controller
       
       // データベースに保存する
       $bought_items->fill($form);
+      //とりあえずカテゴリーを表示できるようにした。カテゴリ選べるように登録したらこの記述は削除
+      $bought_items->category_id=1; 
+      //userのidをリスト登録画面で読み込めるようにした
+      $bought_items->user_id=Auth::id();
+      
+      // dd($form,$bought_items);
       $bought_items->save();
       
       return redirect('bought/bought_create');
