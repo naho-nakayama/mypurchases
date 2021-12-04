@@ -13,16 +13,16 @@ class CreateNotBuyTable extends Migration
      */
     public function up()
     {
-        Schema::create('not_buy', function (Blueprint $table) {
+        Schema::create('want_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-             $table->string('notbuy_name'); // 買いたいものの名前を保存するカラム
-             $table->string('notbuy_price'); // 買いたい物の値段を保存するカラム
-             $table->string('notbuy_sitename'); // 買いたいものがあるサイト名を保存するカラム
+             $table->string('name'); // 買いたいものの名前を保存するカラム
+             $table->string('price'); // 買いたい物の値段を保存するカラム
+             $table->string('sitename'); // 買いたいものがあるサイト名を保存するカラム
              $table->integer('category_id'); // カテゴリーを買いたいモノに登録をするカラム
-             $table->integer('users_id'); // ユーザー情報を紐付けるカラム
-             $table->integer('date');//買いたいものリストを追加したそれぞれの日付を入れる。これも月表示と１日ごとの表示
+             $table->integer('user_id'); // ユーザー情報を紐付けるカラム
             $table->timestamps();
         });
+         Schema::rename('not_buy', 'want_items');
     }
 
     /**
@@ -33,5 +33,6 @@ class CreateNotBuyTable extends Migration
     public function down()
     {
         Schema::dropIfExists('not_buy');
+        Schema::rename('want_items', 'not_buy');
     }
 }

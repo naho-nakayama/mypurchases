@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // 以下を追記することでBought Modelが扱えるようになる
-use App\Bought;
+use App\Bought_item;
 
-class BoughtController extends Controller
+class Bought_itemController extends Controller
 {
    public function bought_list_add()
   {
@@ -29,17 +29,17 @@ class BoughtController extends Controller
   {
    
    // Varidationを行う
-      $this->validate($request, Bought::$rules);
+      $this->validate($request, Bought_item::$rules);
       
-      $bought = new Bought;
+      $bought_items = new Bought_item;
       $form = $request->all();
       
-      // create画面のフォームから画像が送信されてきたら、保存して、$bought->image_path に画像のパスを保存する
+      // create画面のフォームから画像が送信されてきたら、保存して、$bought_items->image_path に画像のパスを保存する
       if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
-        $bought->image_path = basename($path);
+        $bought_items->image_path = basename($path);
       } else {
-          $bought->image_path = null;
+          $bought_items->image_path = null;
       }
       
       // フォームから送信されてきた_tokenを削除する
@@ -49,8 +49,8 @@ class BoughtController extends Controller
       
       
       // データベースに保存する
-      $bought->fill($form);
-      $bought->save();
+      $bought_items->fill($form);
+      $bought_items->save();
       
       return redirect('bought/bought_create');
   }
@@ -61,10 +61,10 @@ class BoughtController extends Controller
       $cond_name = $request->cond_name;
       if ($cond_name != '') {
           // キーワード検索されたら検索結果を取得する
-          $posts = Bought::where('bought_name', $cond_name)->get();
+          $posts = Bought_item::where('bought_name', $cond_name)->get();
       } else {
-          // それ以外はすべてのニュースを取得する
-          $posts = Bought::all();
+          // それ以外はすべての買ったものリストを取得する
+          $posts = Bought_item::all();
       }
       return view('bought.bought_list', ['posts' => $posts, 'cond_name' => $cond_name]);
   }

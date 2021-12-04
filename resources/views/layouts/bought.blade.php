@@ -86,7 +86,7 @@
                     <div class="col-8">
                     </div>
                     <div class="col-4">
-                      <form class="form-inline my-2 my-lg-0">
+                      <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_itemController@index') }}" method="get">
                         <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Keyword_Search') }}" aria-label="Keyword_Search" name="cond_name" value="{{ $cond_name }}">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
                         {{ csrf_field() }}

@@ -13,11 +13,12 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('category_name'); // カテゴリの名前を保存するカラム
+            $table->string('name'); // カテゴリの名前を保存するカラム
             $table->timestamps();
         });
+        Schema::rename('category', 'categories');
     }
 
     /**
@@ -28,5 +29,6 @@ class CreateCategoryTable extends Migration
     public function down()
     {
         Schema::dropIfExists('category');
+        Schema::rename('categories', 'category');
     }
 }

@@ -29,12 +29,12 @@ Route::get('auth/register', 'BoughtforController@register_add');
 
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['prefix' => 'bought', 'middleware' => 'auth'], function() {
-     Route::get('bought_list', 'Admin\BoughtController@bought_list_add')->middleware('auth');
-     Route::post('bought_list', 'Admin\BoughtController@bought_list')->middleware('auth');
-     Route::get('bought_create', 'Admin\BoughtController@bought_add')->middleware('auth');
-     Route::post('bought_create', 'Admin\BoughtController@bought_create')->middleware('auth');
-     Route::get('bought_list', 'Admin\BoughtController@index')->middleware('auth'); //買ったものの実際のリスト表示のルーティング
+     Route::get('bought_list', 'Admin\Bought_itemController@bought_list_add')->middleware('auth');
+     Route::post('bought_list', 'Admin\Bought_itemController@bought_list')->middleware('auth');
+     Route::get('bought_create', 'Admin\Bought_itemController@bought_add')->middleware('auth');
+     Route::post('bought_create', 'Admin\Bought_itemController@bought_create')->middleware('auth');
+     Route::get('bought_list', 'Admin\Bought_itemController@index')->middleware('auth'); //キーワード検索のリスト表示と買ったものの実際のリスト表示のルーティング
 });
