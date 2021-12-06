@@ -37,6 +37,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
+    /**フロント画面からリストに飛ばないので追加**/
     protected function redirectTo()
     {
         return 'bought/bought_list'; /**元々/path**/

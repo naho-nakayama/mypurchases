@@ -13,10 +13,11 @@
         
         <div class="row">
             <div class="bought_list col-md-12 mx-auto">
-                <div class="table">
+                <table class="table table-boredered">
                     <thead>
                         <tr>
                             <th width="20%">ID</th>
+                            <th width="20%">買った日付</th>
                             <th width="20%">買ったもの</th>
                             <th width="20%">値段</th>
                             <th width="20%">サイト名</th>
@@ -25,18 +26,19 @@
                     </thead>
                     
                     <tbody>
-                            @foreach($posts as $bought_items)
+                            @foreach($posts as $bought_item)
                                 <tr>
-                                    <th>{{ $bought_items->id }}</th>
-                                    <td>{{ str_limit($bought_items->name, 100) }}</td>
-                                    <td>{{ str_limit($bought_items->price, 100) }}</td>
-                                    <td>{{ str_limit($bought_items->sitename, 100) }}</td>
+                                    <th>{{ $bought_item->id }}</th>
+                                    <td>{{ str_limit($bought_item->date, 100) }}</td>
+                                    <td>{{ str_limit($bought_item->name, 100) }}</td>
+                                    <td>{{ str_limit($bought_item->price, 100) }}</td>
+                                    <td>{{ str_limit($bought_item->sitename, 100) }}</td>
                                    
                                 </tr>
                             @endforeach
                         </tbody>
                         
-                </div>
+                </table>
             </div>    
         </div>
         

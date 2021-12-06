@@ -1,4 +1,12 @@
-.display-4 {
+@charset "UTF-8";
+
+body {
+  font-family: "\30D2\30E9\30AE\30CE\4E38\30B4\30B7\30C3\30AF", "Noto Sans CJK JP", "\6E38\30B4\30B7\30C3\30AF", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", sans-serif;
+  font-size: 15px;
+  line-height: 2.5;
+}
+
+.display-5 {
   background: linear-gradient(transparent 70%, #FFFF00 0%);
 }
 
@@ -9,5 +17,70 @@ h1 {
 .welcome {
   position: relative;
   top: 9px;
+}
+
+.select_box {
+  overflow: hidden;
+  width: 300px;
+  /*** セレクトボックスの横幅 ***/
+  text-align: center;
+  position: relative;
+  border: 1px solid #bbbbbb;
+  /*** セレクトボックスのボーター設定 ***/
+  border-radius: 5px;
+  /*** セレクトボックスの角丸 ***/
+  background: #ffffff;
+  /*** セレクトボックスの背景色 ***/
+}
+
+.select_box select {
+  width: 100%;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  padding: 8px 38px 8px 8px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.select_box select::-ms-expand {
+  display: none;
+}
+
+.select_box::before {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  content: "";
+  border-top: 2px solid #696969;
+  /*** 矢印の色 ***/
+  border-right: 2px solid #696969;
+  /*** 矢印の色 ***/
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(135deg);
+}
+
+.select_box:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 38px;
+  content: "";
+  background: #FFFFFD;
+  /*** 右側の背景色 ***/
+  pointer-events: none;
 }
 

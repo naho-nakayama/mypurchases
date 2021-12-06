@@ -1,5 +1,8 @@
+@charset "UTF-8";
+
 body {
   background-color: #FFFFFF;
+  font-family: "\30D2\30E9\30AE\30CE\4E38\30B4\30B7\30C3\30AF", "Noto Sans CJK JP", "\6E38\30B4\30B7\30C3\30AF", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", sans-serif;
 }
 
 .title {

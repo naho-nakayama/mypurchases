@@ -77,7 +77,7 @@
              <div class="container">
                  <div class="row row align-items-center">
                   <div class="col align-self-start">
-                   <h1 class="display-4">買ったものリスト</h1>
+                   <h1 class="display-5">買ったものリスト</h1>
                   </div>
                  </div>
                  
