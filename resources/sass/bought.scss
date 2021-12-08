@@ -19,6 +19,7 @@ h1{
 
 
 
+
 .select_box {
   overflow: hidden;
   width: 300px; /*** セレクトボックスの横幅 ***/
@@ -73,3 +74,6 @@ h1{
   pointer-events: none;
 }
 
+.input-group{
+    width:300px;
+}

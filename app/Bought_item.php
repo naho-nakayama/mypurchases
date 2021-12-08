@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Bought_item extends Model
 {
@@ -15,4 +16,9 @@ class Bought_item extends Model
         'sitename' => 'required',
        
     );
+    
+    function getDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format('Y/m/d') : null;
+    }
 }

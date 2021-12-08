@@ -90,7 +90,7 @@
                             @endif
                             <div class="list_register_box">
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_sitename">買った日付は？</label>
+                                    <label class="col-md-3" for="bought_date">買った日付は？</label>
                                     <div class="col-md-3">
                                         <input type="date" class="form-control" name="date" value="{{ old('date',  Carbon\Carbon::today()->format('Y-m-d')) }}">
                                     </div>
@@ -106,6 +106,7 @@
                                     <div class="col-md-3">
                                         <input type="text" class="form-control" name="price" value="{{ old('price') }}">
                                     </div>
+                                    <p>円</p>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="bought_sitename">サイト名は？</label>
@@ -119,22 +120,57 @@
                                         <div class="select_box">
                                             <select name="category_id">
                                                 <option value="1">衣類</option>
-                                                <option value="2">食べ物</option>
+                                                <option value="2">食べ物・飲み物</option>
                                                 <option value="3">本</option>
+                                                <option value="4">日用品</option>
+                                                <option value="5">雑貨</option>
+                                                <option value="6">アクセサリー</option>
+                                                <option value="7">化粧品</option>
+                                                <option value="8">ゲーム</option>
+                                                <option value="9">機器</option>
+                                                <option value="10">その他</option>
                                             </select>
                                         </div>
                                         <!--<input type="text" class="form-control" name="name" value="{{ old('name') }}">-->
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="title">ものの画像</label>
-                                    <div class="col-md-9">
-                                        <input type="file" class="form-control-file" name="image">
-                                    </div>
+                                    <label class="col-md-3" for="image">ものの画像</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="image">
+                                                    <label class="custom-file-label" for="inputFile" data-browse="参照">{{ __('messages.Choose file') }}</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <button type="button" class="btn btn-outline-secondary input-group-text" id="inputFileReset">取消</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                             {{ csrf_field() }}
-                            <input type="submit" class="btn btn-outline-info btn-lg" value="登録">
+                            
+                            <input type="submit" class="btn btn-outline-info btn-lg" value="追加">
+                            
+                            <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+                                <script>
+                                bsCustomFileInput.init();
+                                
+                                document.getElementById('inputFileReset').addEventListener('click', function() {
+                                
+                                bsCustomFileInput.destroy();
+                                
+                                var elem = document.getElementById('inputFile');
+                                elem.value = '';
+                                var clone = elem.cloneNode(false);
+                                elem.parentNode.replaceChild(clone, elem);
+                                
+                                bsCustomFileInput.init();
+                                
+                                });
+                                </script>
+                            
                         </form>
                     </div>
                 </div>

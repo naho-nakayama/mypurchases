@@ -34,6 +34,14 @@
                                     <td>{{ str_limit($bought_item->price, 100) }}</td>
                                     <td>{{ str_limit($bought_item->sitename, 100) }}</td>
                                    
+                                   <td>
+                                        <div>
+                                            <a href="{{ action('Admin\Bought_itemController@edit', ['id' => $bought_item->id]) }}">編集</a>
+                                        </div>
+                                        <div>
+                                            <a href="{{ action('Admin\Bought_itemController@delete', ['id' => $bought_item->id]) }}">削除</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

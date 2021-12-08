@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Bought_item;
 //以下の記述でララベルのAuth機能が使えるように？
 use Auth;
+use Carbon\Carbon;
 
 class Bought_itemController extends Controller
 {
@@ -79,4 +80,48 @@ class Bought_itemController extends Controller
   
   
   
+  public function edit(Request $request)
+  {
+      // Bought_item Modelからデータを取得する
+      $bought_item = Bought_item::find($request->id);
+      if (empty($bought_item)) {
+        abort(404);    
+      }
+      return view('bought.bought_edit', ['bought_item_form' => $bought_item]);
+  }
+  
+  public function update(Request $request)
+  {
+      // Validationをかける
+      $this->validate($request, Bought_item::$rules);
+      // Bought_item Modelからデータを取得する
+      $bought_item = Bought_item::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $bought_item_form = $request->all();
+      if ($request->remove == 'true') {
+          $bought_item_form['image_path'] = null;
+      } elseif ($request->file('image')) {
+          $path = $request->file('image')->store('public/image');
+          $bought_item_form['image_path'] = basename($path);
+      } else {
+          $bought_item_form['image_path'] = $bought_item->image_path;
+      }
+
+      unset($bought_item_form['image']);
+      unset($bought_item_form['remove']);
+      unset($bought_item_form['_token']);
+      // 該当するデータを上書きして保存する
+      $bought_item->fill($bought_item_form)->save();
+      return redirect('bought/bought_list');
+  }
+  
+  
+  public function delete(Request $request)
+  {
+      // 該当するBought_item Modelを取得
+      $bought_item = Bought_item::find($request->id);
+      // 削除する
+      $bought_item->delete();
+      return redirect('bought/bought_list');
+  }
 }

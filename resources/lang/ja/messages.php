@@ -12,5 +12,6 @@ return [
     'Keyword_Search' =>'キーワード検索',
     'Search' =>'検索',
     'Logout' =>'ログアウト',
+    'Choose file' =>'画像を選択',
     
 ];

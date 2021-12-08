@@ -84,3 +84,7 @@ h1 {
   pointer-events: none;
 }
 
+.input-group {
+  width: 300px;
+}
+
