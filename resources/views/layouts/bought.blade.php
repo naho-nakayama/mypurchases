@@ -104,9 +104,16 @@
                           カテゴリ検索
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">衣類</a>
+                        <a class="dropdown-item" href="#">食べ物・飲み物</a>
+                        <a class="dropdown-item" href="#">本</a>
+                        <a class="dropdown-item" href="#">日用品</a>
+                        <a class="dropdown-item" href="#">雑貨</a>
+                        <a class="dropdown-item" href="#">アクセサリー</a>
+                        <a class="dropdown-item" href="#">化粧品・スキンケア</a>
+                        <a class="dropdown-item" href="#">ゲーム</a>
+                        <a class="dropdown-item" href="#">機器</a>
+                        <a class="dropdown-item" href="#">その他</a>
                       </div>
                      </div>
                     </div>

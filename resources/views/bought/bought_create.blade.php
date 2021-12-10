@@ -125,7 +125,7 @@
                                                 <option value="4">日用品</option>
                                                 <option value="5">雑貨</option>
                                                 <option value="6">アクセサリー</option>
-                                                <option value="7">化粧品</option>
+                                                <option value="7">化粧品・スキンケア</option>
                                                 <option value="8">ゲーム</option>
                                                 <option value="9">機器</option>
                                                 <option value="10">その他</option>

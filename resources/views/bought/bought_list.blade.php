@@ -16,11 +16,11 @@
                 <table class="table table-boredered">
                     <thead>
                         <tr>
-                            <th width="20%">ID</th>
                             <th width="20%">買った日付</th>
                             <th width="20%">買ったもの</th>
                             <th width="20%">値段</th>
                             <th width="20%">サイト名</th>
+                            <th width="20%">カテゴリー</th>
                             <!--<th width="10%">操作</th>-->
                         </tr>
                     </thead>
@@ -28,11 +28,11 @@
                     <tbody>
                             @foreach($posts as $bought_item)
                                 <tr>
-                                    <th>{{ $bought_item->id }}</th>
                                     <td>{{ str_limit($bought_item->date, 100) }}</td>
                                     <td>{{ str_limit($bought_item->name, 100) }}</td>
                                     <td>{{ str_limit($bought_item->price, 100) }}</td>
                                     <td>{{ str_limit($bought_item->sitename, 100) }}</td>
+                                    <td>{{ str_limit($bought_item->category->name,100) }}</td>
                                    
                                    <td>
                                         <div>
