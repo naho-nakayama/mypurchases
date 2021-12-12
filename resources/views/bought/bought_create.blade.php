@@ -91,7 +91,7 @@
                             <div class="list_register_box">
                                 <div class="form-group row">
                                     <label class="col-md-3" for="bought_date">買った日付は？</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <input type="date" class="form-control" name="date" value="{{ old('date',  Carbon\Carbon::today()->format('Y-m-d')) }}">
                                     </div>
                                 </div>
@@ -142,34 +142,21 @@
                                                     <input type="file" class="custom-file-input" name="image">
                                                     <label class="custom-file-label" for="inputFile" data-browse="参照">{{ __('messages.Choose file') }}</label>
                                                 </div>
-                                                <div class="input-group-append">
+                                                 
+                                                <div class="custom-file">
                                                     <button type="button" class="btn btn-outline-secondary input-group-text" id="inputFileReset">取消</button>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                 </div>
                             </div>
                             {{ csrf_field() }}
-                            
-                            <input type="submit" class="btn btn-outline-info btn-lg" value="追加">
-                            
-                            <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-                                <script>
-                                bsCustomFileInput.init();
+                            <div class="form-group row">
                                 
-                                document.getElementById('inputFileReset').addEventListener('click', function() {
-                                
-                                bsCustomFileInput.destroy();
-                                
-                                var elem = document.getElementById('inputFile');
-                                elem.value = '';
-                                var clone = elem.cloneNode(false);
-                                elem.parentNode.replaceChild(clone, elem);
-                                
-                                bsCustomFileInput.init();
-                                
-                                });
-                                </script>
+                                <input type="submit" class="btn btn-outline-info btn-lg" value="追加">
+                            </div>
+                           
                             
                         </form>
                     </div>

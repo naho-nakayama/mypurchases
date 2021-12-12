@@ -76,6 +76,7 @@
                     <div class="row">
                         <div class="col-md-8 mx-auto">
                             <h1 class="display-5">リストを編集する</h1>
+                            <br>
                             <form action="{{ action('Admin\Bought_itemController@update') }}" method="post" enctype="multipart/form-data">
                                 @if (count($errors) > 0)
                                     <ul>
@@ -86,7 +87,7 @@
                                 @endif
                                 <div class="form-group row">
                                     <label class="col-md-3" for="bought_date">買った日付は？</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="date" class="form-control" name="date" value="{{ $bought_item_form->date }}">
                                     </div>
                                 </div>
@@ -114,16 +115,15 @@
                                     <div class="col-md-9">
                                         <div class="select_box">
                                             <select name="category_id" value="{{ $bought_item_form->category_id }}">
-                                                <option value="1">衣類</option>
-                                                <option value="2">食べ物・飲み物</option>
-                                                <option value="3">本</option>
-                                                <option value="4">日用品</option>
-                                                <option value="5">雑貨</option>
-                                                <option value="6">アクセサリー</option>
-                                                <option value="7">化粧品</option>
-                                                <option value="8">ゲーム</option>
-                                                <option value="9">機器</option>
-                                                <option value="10">その他</option>
+                                                
+                                                @foreach($category as $value)
+                                                    @php $selected = "";@endphp
+                                                    @if($value->id == $bought_item_form->category_id)
+                                                    @php $selected ="selected";@endphp
+                                                    @endif
+                                                <option value="{{ $value->id}}" {{$selected}}>{{$value->name}}</option>
+                                                
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

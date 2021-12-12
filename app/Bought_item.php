@@ -19,7 +19,7 @@ class Bought_item extends Model
     
     function getDateAttribute($value)
     {
-        return $value ? Carbon::parse($value)->format('Y/m/d') : null;
+        return $value ? Carbon::parse($value)->format('Y-m-d') : null;
     }
     
     public function category(){

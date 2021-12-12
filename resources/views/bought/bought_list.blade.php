@@ -16,11 +16,12 @@
                 <table class="table table-boredered">
                     <thead>
                         <tr>
-                            <th width="20%">買った日付</th>
-                            <th width="20%">買ったもの</th>
-                            <th width="20%">値段</th>
-                            <th width="20%">サイト名</th>
-                            <th width="20%">カテゴリー</th>
+                            <th width="15%">買った日付</th>
+                            <th width="15%">買ったもの</th>
+                            <th width="15%">値段（円）</th>
+                            <th width="15%">サイト名</th>
+                            <th width="15%">カテゴリー</th>
+                            <th width="20%">画像</th>
                             <!--<th width="10%">操作</th>-->
                         </tr>
                     </thead>
@@ -28,11 +29,12 @@
                     <tbody>
                             @foreach($posts as $bought_item)
                                 <tr>
-                                    <td>{{ str_limit($bought_item->date, 100) }}</td>
-                                    <td>{{ str_limit($bought_item->name, 100) }}</td>
-                                    <td>{{ str_limit($bought_item->price, 100) }}</td>
-                                    <td>{{ str_limit($bought_item->sitename, 100) }}</td>
-                                    <td>{{ str_limit($bought_item->category->name,100) }}</td>
+                                    <td>{{ $bought_item->date}}</td>
+                                    <td>{{ str_limit($bought_item->name, 60) }}</td>
+                                    <td>{{ str_limit($bought_item->price, 60) }}</td>
+                                    <td>{{ str_limit($bought_item->sitename, 60) }}</td>
+                                    <td>{{ str_limit($bought_item->category->name,60) }}</td>
+                                    <td><image src={{ secure_asset('storage/image/'.$bought_item->image_path) }} alt="画像" width="160" height="110" ></td>
                                    
                                    <td>
                                         <div>

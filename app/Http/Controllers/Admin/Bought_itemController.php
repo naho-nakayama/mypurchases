@@ -10,6 +10,8 @@ use App\Bought_item;
 //以下の記述でララベルのAuth機能が使えるように？
 use Auth;
 use Carbon\Carbon;
+//カテゴリーのテーブルを使うためモデル名を記述
+use App\Category;
 
 class Bought_itemController extends Controller
 {
@@ -53,8 +55,8 @@ class Bought_itemController extends Controller
       
       // データベースに保存する
       $bought_items->fill($form);
-      //とりあえずカテゴリーを表示できるようにした。カテゴリ選べるように登録したらこの記述は削除
-      $bought_items->category_id=1; 
+      //カテゴリーの名前と画像が表示ができるように
+      $bought_items->category_id=$request->category_id; 
       //userのidをリスト登録画面で読み込めるようにした
       $bought_items->user_id=Auth::id();
       
@@ -84,17 +86,19 @@ class Bought_itemController extends Controller
   {
       // Bought_item Modelからデータを取得する
       $bought_item = Bought_item::find($request->id);
+      //categoriesテーブルからCategoryモデルを使ってデータを全て取得して変数に代入
+      $category = Category::all();
       if (empty($bought_item)) {
         abort(404);    
       }
-      return view('bought.bought_edit', ['bought_item_form' => $bought_item]);
+      return view('bought.bought_edit', ['bought_item_form' => $bought_item ,'category'=>$category]);
   }
   
   public function update(Request $request)
   {
       // Validationをかける
       $this->validate($request, Bought_item::$rules);
-      // Bought_item Modelからデータを取得する
+      // Bought_item Modelからデータを検索して取得する
       $bought_item = Bought_item::find($request->id);
       // 送信されてきたフォームデータを格納する
       $bought_item_form = $request->all();
