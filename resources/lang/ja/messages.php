@@ -9,7 +9,7 @@ return [
     'Name' => '名前',
     'Confirm Password' => 'パスワード再入力',
     'Register here' => '新規登録',
-    'Keyword_Search' =>'キーワード検索',
+    'Purchases_Sitename_Input' =>'買ったものorサイト名入力',
     'Search' =>'検索',
     'Logout' =>'ログアウト',
     'Choose file' =>'画像を選択',

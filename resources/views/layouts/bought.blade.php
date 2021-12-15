@@ -73,58 +73,61 @@
 
 
 
-           <main>
-             <div class="container">
-                 <div class="row row align-items-center">
-                  <div class="col align-self-start">
-                   <h1 class="display-5">買ったものリスト</h1>
-                  </div>
-                 </div>
-                 
-                 
-                 <div class="row">
-                    <div class="col-8">
+            <main>
+                <div class="container">
+                    <div class="row row align-items-center">
+                        <div class="col align-self-start">
+                            <h1 class="display-5">買ったものリスト</h1>
+                        </div>
                     </div>
-                    <div class="col-4">
-                      <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_itemController@index') }}" method="get">
-                        <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Keyword_Search') }}" aria-label="Keyword_Search" name="cond_name" value="{{ $cond_name }}">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
-                        {{ csrf_field() }}
-                      </form>
-                    </div>
-                  </div>
-                  
-                  
-                  <div class="row">
-                   <div class="col-10">
-                   </div>
-                   <div class="col-2">
-                    <div class="dropdown">
-                      <button class="btn btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                          カテゴリ検索
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">衣類</a>
-                        <a class="dropdown-item" href="#">食べ物・飲み物</a>
-                        <a class="dropdown-item" href="#">本</a>
-                        <a class="dropdown-item" href="#">日用品</a>
-                        <a class="dropdown-item" href="#">雑貨</a>
-                        <a class="dropdown-item" href="#">アクセサリー</a>
-                        <a class="dropdown-item" href="#">化粧品・スキンケア</a>
-                        <a class="dropdown-item" href="#">ゲーム</a>
-                        <a class="dropdown-item" href="#">機器</a>
-                        <a class="dropdown-item" href="#">その他</a>
-                      </div>
-                     </div>
-                    </div>
-                 </div>
-                 
-             </div>
-                {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
-                @yield('content')
                 
                 
+                    <div class="row">
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4">
+                            <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_itemController@index') }}" method="get">
+                                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Purchases_Sitename_Input') }}" aria-label="Purchases_Sitename_Input" name="cond_name" value="{{ $cond_name }}">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </div>
                 
+                
+                    <div class="row">
+                        <div class="col-10">
+                        </div>
+                        <div class="col-2">
+                            <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_itemController@index') }}" method="get">
+                                <div class="dropdown">
+                                    <button class="btn btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                    カテゴリ検索
+                                    </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=1'}}">衣類</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=2'}}">食べ物・飲み物</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=3'}}">本</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=4'}}">日用品</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=5'}}">雑貨</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=6'}}">アクセサリー</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=7'}}">化粧品・スキンケア</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=8'}}">ゲーム</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=9'}}">機器</a>
+                                        <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=10'}}">その他</a>
+                                        </div>
+                                        {{ csrf_field() }}
+                                </div>
+                            </form>    
+                        </div>
+                    </div>
+                
+                </div>
+                    {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
+                    @yield('content')
+            
+            
+            
             </main>
         </div>
     </body>

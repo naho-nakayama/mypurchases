@@ -17,9 +17,9 @@ class Bought_item extends Model
        
     );
     
-    function getDateAttribute($value)
+    function getFormatedDate()
     {
-        return $value ? Carbon::parse($value)->format('Y-m-d') : null;
+        return $this->date ? Carbon::parse($this->date)->format('Y/m/d') : null;
     }
     
     public function category(){

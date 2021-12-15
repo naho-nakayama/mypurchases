@@ -70,13 +70,18 @@ class Bought_itemController extends Controller
       public function index(Request $request)
   {
       $cond_name = $request->cond_name;
+      $cid = $request->cid;
       if ($cond_name != '') {
           // キーワード検索されたら検索結果を取得する
-          $posts = Bought_item::where('bought_name', $cond_name)->get();
-      } else {
-          // それ以外はすべての買ったものリストを取得する
+          $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->get();
+      } else if ($cid != ''){
+          //カテゴリー検索されたら検索結果取得
+          $posts = Category::find($cid)->bought_items->sortByDesc('created_at');
+      } else{
           $posts = Bought_item::all();
       }
+      
+      
       return view('bought.bought_list', ['posts' => $posts, 'cond_name' => $cond_name]);
   }
   
