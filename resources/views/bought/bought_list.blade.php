@@ -1,6 +1,6 @@
 @extends('layouts.bought')
 
-          @section('title', '買ったものリスト')
+          @section('title', '買ったものリスト（日にち単位）')
 　
 @section('content')
 
@@ -8,6 +8,19 @@
         <div class="row">
             <div class="pull-left">
                  <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class= "pull-left">
+                <div class="dropdown">
+                    <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    リスト表示方法
+                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add')}}">月単位</a>
+                        </div>
+                </div>
             </div>
         </div>
         

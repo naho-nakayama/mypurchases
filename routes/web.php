@@ -41,5 +41,6 @@ Route::group(['prefix' => 'bought', 'middleware' => 'auth'], function() {
     Route::post('bought_edit', 'Admin\Bought_itemController@update')->middleware('auth');
     Route::get('delete', 'Admin\Bought_itemController@delete')->middleware('auth');
     
-  
+    Route::get('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth');
+    Route::post('bought_carender', 'Admin\Bought_carenderController@bought_carender')->middleware('auth');
 });
