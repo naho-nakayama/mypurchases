@@ -29,17 +29,24 @@ class Bought_carenderController extends Controller
     }
     $j=0;
     for ($i = 0; $i < $count; $i++, $date->addDay()) {
-       if(in_array($date->copy(),$match_date)){
-           $dates[]=[$date->copy(),$match_name[$j]];
-           $j++;
-       }else{
-            $dates[] = [$date->copy(),null];
-       }
+       
+        $dates[] = [
+            "date"=> $date->copy(),
+            "bought_items" => Bought_item::whereDate('date', '=', $date)->get()
+        ];
         
-        // copyしないと全部同じオブジェクトを入れてしまうことになる
-        // $dates[] = $date->copy();
+       
+       
+       
     }
-      return view('bought.bought_carender',['dates' =>$dates,'currentMonth'=> $now->month,'name' => $match_date]);
+    
+     $firstDate = new Carbon($dateStr);
+        $preFirstDate = $firstDate->startOfMonth()->subMonthNoOverflow()->toDateString();
+        
+        $nxtFirstDate = $firstDate->addMonthNoOverflow()->toDateString();
+        
+      return view('bought.bought_carender',['dates' =>$dates,'currentMonth'=> $now->month,'name' => $match_date ,
+        'preFirstDate' => $preFirstDate,'nxtFirstDate' => $nxtFirstDate]);
   }
   
   

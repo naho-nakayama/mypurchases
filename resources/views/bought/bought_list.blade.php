@@ -1,6 +1,6 @@
 @extends('layouts.bought')
 
-          @section('title', '買ったものリスト（日にち単位）')
+@section('title', '買ったものリスト（1日単位）')
 　
 @section('content')
 

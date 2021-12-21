@@ -24,6 +24,7 @@
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
+        <link href="{{ asset('css/bought.css') }}" rel="stylesheet">
         <link href="{{ asset('css/bought_carender.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -71,12 +72,43 @@
                 </div>
             </nav>
 
-
-
-            <main>
-                <div class="container">
-                    {{$currentMonth}}
-                    {{$name[0]}}
+            <div class="container">
+                <div class="col-md-8 mx-auto">
+                        <h1 class="display-5">買ったものリスト</h1>
+                        <br>
+                </div>
+                <div class="row">
+                    <div class="pull-left">
+                         <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class= "pull-left">
+                        <div class="dropdown">
+                            <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                            リスト表示方法
+                            </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@bought_list')}}">1日単位</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+        
+                    
+            
+                <div class="row">
+                        <div class="card-header text-center">
+                            
+                            <a class="btn btn-outline-secondary float-left" href="{{ url('/?date=' . $preFirstDate) }}">前の月</a>
+                        
+                        {{--<span>{{ $calendar->getTitle() }}</span>--}}
+                            
+                            <a class="btn btn-outline-secondary Cfloat-right" href="{{ url('/?date=' . $nxtFirstDate) }}">次の月</a>
+                        </div>
+                        {{$currentMonth}}
+                        {{$name[0]}}
                         <table class="table table-bordered">
                           <thead>
                             <tr>
@@ -87,27 +119,31 @@
                           </thead>
                           <tbody>
                             @foreach ($dates as $date)
-                            @if ($date[0]->dayOfWeek == 0)
+                            @if ($date["date"]->dayOfWeek == 0)
                             <tr>
                             @endif
                               <td
-                                @if ($date[0]->month != $currentMonth)
+                                @if ($date["date"]->month != $currentMonth)
                                 class="bg-secondary"
                                 @endif
                               >
-                                {{ $date[0]->day }}
-                                {{ $date[1] }}
+                                <p>{{ $date["date"]->day }}</p>
+                            @foreach($date["bought_items"] as $bought_item)
+                              <p>{{ $bought_item->name }}</p>
+                            @endforeach
+                                
+                                
+                                
                               </td>
-                            @if ($date[0]->dayOfWeek == 6)
+                            @if ($date["date"]->dayOfWeek == 6)
                             </tr>
                             @endif
                             @endforeach
                           </tbody>
                         </table>
                     
-                
                 </div>
-            </main>
+            </div>
         </div>
     </body>
-</html>
+</html>            
