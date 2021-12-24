@@ -156,9 +156,10 @@
                                 
                                 <input type="submit" class="btn btn-outline-info btn-lg" value="追加">
                             </div>
-                           
-                            
                         </form>
+                        <div class = "form-group row">
+                            
+                        </div>
                     </div>
                 </div>
             </div>

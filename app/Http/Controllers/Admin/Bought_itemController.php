@@ -78,7 +78,7 @@ class Bought_itemController extends Controller
           //カテゴリー検索されたら検索結果取得
           $posts = Category::find($cid)->bought_items->sortByDesc('created_at');
       } else{
-          $posts = Bought_item::all();
+          $posts = Bought_item::all()->sortByDesc('created_at');
       }
       
       

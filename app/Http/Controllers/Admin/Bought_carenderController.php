@@ -13,6 +13,13 @@ class Bought_carenderController extends Controller
     public function bought_carender_add(Request $request)
   {
     $now = Carbon::now();
+        // if($request->'date' == $preFirstDate){
+        //     new Carbon( $preFirstDate);
+        // }else if($request->'date' == $nxtFirstDate){
+        //     new Carbon( $nxtFirstDate);
+        // }else{
+        //     Carbon::now();
+        // }
     $dateStr = sprintf('%04d-%02d-01', $now->year, $now->month);
     $date = new Carbon( $dateStr);
     // カレンダーを四角形にするため、前月となる左上の隙間用のデータを入れるためずらす

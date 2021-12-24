@@ -99,16 +99,19 @@
                     
             
                 <div class="row">
-                        <div class="card-header text-center">
-                            
-                            <a class="btn btn-outline-secondary float-left" href="{{ url('/?date=' . $preFirstDate) }}">前の月</a>
+                    
+                        <p>{{$currentMonth}}</p>
+                    
+                    <div class="card-header text-center">
                         
-                        {{--<span>{{ $calendar->getTitle() }}</span>--}}
-                            @if($nxtFirstDate)
-                            <a class="btn btn-outline-secondary Cfloat-right" href="{{ url('/?date=' . $nxtFirstDate) }}">次の月</a>
-                            @endif
-                        </div>
-                        {{$currentMonth}}
+                        <a class="btn btn-outline-secondary float-left" href="{{ action('Admin\Bought_carenderController@bought_carender_add', ['date'=> $preFirstDate]) }}">前の月</a>
+                    
+                    {{--<span>{{ $calendar->getTitle() }}</span>--}}
+                        @if($nxtFirstDate)
+                        <a class="btn btn-outline-secondary Cfloat-right" href="{{ url('/?date=' . $nxtFirstDate) }}">次の月</a>
+                        @endif
+                    </div>
+                       
                         
                         <table class="table table-bordered">
                           <thead>
