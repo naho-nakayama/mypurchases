@@ -22,12 +22,7 @@ class Bought_carenderController extends Controller
     $count = ceil($count / 7) * 7;
     $dates = [];
 
-    $items= DB::table('bought_items')->whereYear('date','2021')->whereMonth('date', '12')->get();
-    foreach($items as $item){
-        $match_date[]= date("Y-m-d",strtotime($item->date));
-        $match_name[]=$item->name;
-    }
-    $j=0;
+   
     for ($i = 0; $i < $count; $i++, $date->addDay()) {
        
         $dates[] = [
@@ -36,16 +31,21 @@ class Bought_carenderController extends Controller
         ];
         
        
-       
-       
-    }
+        }
     
-     $firstDate = new Carbon($dateStr);
-        $preFirstDate = $firstDate->startOfMonth()->subMonthNoOverflow()->toDateString();
+     $tmpDate = new Carbon($dateStr);
+     
+        $preFirstDate = $tmpDate->startOfMonth()->subMonthNoOverflow()->toDateString();
+        $tmpDate = new Carbon($dateStr);
+        $nxtFirstDate = $tmpDate->startOfMonth()->addMonth()->toDateString();
+        // dd($firstDate->toDateString(), $firstDate->addMonth()->toDateString());
+        if($dateStr < $nxtFirstDate){
+            $nxtFirstDate = null;
+        }
+        // dd($preFirstDate, $tmpDate->toDateString(), $nxtFirstDate);
         
-        $nxtFirstDate = $firstDate->addMonthNoOverflow()->toDateString();
         
-      return view('bought.bought_carender',['dates' =>$dates,'currentMonth'=> $now->month,'name' => $match_date ,
+      return view('bought.bought_carender',['dates' =>$dates,'currentMonth'=> $now->month,
         'preFirstDate' => $preFirstDate,'nxtFirstDate' => $nxtFirstDate]);
   }
   

@@ -104,11 +104,12 @@
                             <a class="btn btn-outline-secondary float-left" href="{{ url('/?date=' . $preFirstDate) }}">前の月</a>
                         
                         {{--<span>{{ $calendar->getTitle() }}</span>--}}
-                            
+                            @if($nxtFirstDate)
                             <a class="btn btn-outline-secondary Cfloat-right" href="{{ url('/?date=' . $nxtFirstDate) }}">次の月</a>
+                            @endif
                         </div>
                         {{$currentMonth}}
-                        {{$name[0]}}
+                        
                         <table class="table table-bordered">
                           <thead>
                             <tr>
@@ -117,27 +118,32 @@
                               @endforeach
                             </tr>
                           </thead>
+                          
                           <tbody>
                             @foreach ($dates as $date)
-                            @if ($date["date"]->dayOfWeek == 0)
-                            <tr>
-                            @endif
-                              <td
-                                @if ($date["date"]->month != $currentMonth)
-                                class="bg-secondary"
+                                @if ($date["date"]->dayOfWeek == 0)
+                                <tr>
                                 @endif
-                              >
-                                <p>{{ $date["date"]->day }}</p>
-                            @foreach($date["bought_items"] as $bought_item)
-                              <p>{{ $bought_item->name }}</p>
-                            @endforeach
-                                
-                                
-                                
-                              </td>
-                            @if ($date["date"]->dayOfWeek == 6)
-                            </tr>
-                            @endif
+                                    <td
+                                        @if ($date["date"]->month != $currentMonth)
+                                        class="bg-info"
+                                        @endif
+                                    >
+                                        <p>{{ $date["date"]->day }}</p>
+                                        @if(count($date["bought_items"]) >2)
+                                            @for($i = 0; $i < 2; $i++)
+                                                <p>{{ $date["bought_items"][$i]->name }}</p>
+                                            @endfor
+                                        @else
+                                            @foreach($date["bought_items"] as $bought_item)
+                                                 <p>{{ $bought_item->name }}</p>
+                                            @endforeach
+                                            
+                                        @endif
+                                    </td>
+                                @if ($date["date"]->dayOfWeek == 6)
+                                </tr>
+                                @endif
                             @endforeach
                           </tbody>
                         </table>
