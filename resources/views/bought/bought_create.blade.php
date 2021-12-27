@@ -90,32 +90,32 @@
                             @endif
                             <div class="list_register_box">
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_date">買った日付は？</label>
+                                    <label class="col-md-3" for="bought_date">✔︎️️ 買った日付は？</label>
                                     <div class="col-md-4">
                                         <input type="date" class="form-control" name="date" value="{{ old('date',  Carbon\Carbon::today()->format('Y-m-d')) }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="name">買ったものは？</label>
+                                    <label class="col-md-3" for="name">✔ 買ったものは？</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="price">金額は？</label>
+                                    <label class="col-md-3" for="price">✔ 金額は？</label>
                                     <div class="col-md-3">
                                         <input type="text" class="form-control" name="price" value="{{ old('price') }}">
                                     </div>
                                     <p>円</p>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_sitename">サイト名は？</label>
+                                    <label class="col-md-3" for="bought_sitename">✔ サイト名は？</label>
                                     <div class="col-md-3">
                                         <input type="text" class="form-control" name="sitename" value="{{ old('sitename') }}">
                                     </div>
                                 </div>
                                  <div class="form-group row">
-                                    <label class="col-md-3" for="category">もののカテゴリーは？</label>
+                                    <label class="col-md-3" for="category">✔ もののカテゴリーは？</label>
                                     <div class="col-md-9">
                                         <div class="select_box">
                                             <select name="category_id">
@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="image">ものの画像</label>
+                                    <label class="col-md-3" for="image">✔ ものの画像</label>
                                         <div class="col-md-9">
                                             <div class="input-group">
                                                 <div class="custom-file">
@@ -158,7 +158,12 @@
                             </div>
                         </form>
                         <div class = "form-group row">
-                            
+                            <div class ="col-md-9">
+                                
+                            </div>
+                            <div class ="col-md-3 text-right">
+                                <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_list') }}'">⬅︎リストに戻る</button>
+                            </div>
                         </div>
                     </div>
                 </div>

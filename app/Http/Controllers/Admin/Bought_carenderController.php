@@ -12,14 +12,12 @@ class Bought_carenderController extends Controller
 {
     public function bought_carender_add(Request $request)
   {
-    $now = Carbon::now();
-        // if($request->'date' == $preFirstDate){
-        //     new Carbon( $preFirstDate);
-        // }else if($request->'date' == $nxtFirstDate){
-        //     new Carbon( $nxtFirstDate);
-        // }else{
-        //     Carbon::now();
-        // }
+        if($request->date !== null){
+        $now = new Carbon( $request->date);
+        }else{
+        $now = Carbon::now();
+        }
+        
     $dateStr = sprintf('%04d-%02d-01', $now->year, $now->month);
     $date = new Carbon( $dateStr);
     // カレンダーを四角形にするため、前月となる左上の隙間用のデータを入れるためずらす
@@ -37,23 +35,24 @@ class Bought_carenderController extends Controller
             "bought_items" => Bought_item::whereDate('date', '=', $date)->get()
         ];
         
-       
         }
-    
-     $tmpDate = new Carbon($dateStr);
-     
+        
+        //前の月を取ってくる↓
+        $tmpDate = new Carbon($dateStr);
         $preFirstDate = $tmpDate->startOfMonth()->subMonthNoOverflow()->toDateString();
+        //次の月を取ってくる↓
         $tmpDate = new Carbon($dateStr);
         $nxtFirstDate = $tmpDate->startOfMonth()->addMonth()->toDateString();
+        $cmpDate =Carbon::now()->startOfMonth()->toDateString();
         // dd($firstDate->toDateString(), $firstDate->addMonth()->toDateString());
-        if($dateStr < $nxtFirstDate){
+        if( $cmpDate < $nxtFirstDate){
             $nxtFirstDate = null;
         }
         // dd($preFirstDate, $tmpDate->toDateString(), $nxtFirstDate);
         
         
       return view('bought.bought_carender',['dates' =>$dates,'currentMonth'=> $now->month,
-        'preFirstDate' => $preFirstDate,'nxtFirstDate' => $nxtFirstDate]);
+        'preFirstDate' => $preFirstDate,'nxtFirstDate' => $nxtFirstDate, 'currentYear'=> $now->year]);
   }
   
   

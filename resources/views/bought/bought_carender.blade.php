@@ -78,13 +78,7 @@
                         <br>
                 </div>
                 <div class="row">
-                    <div class="pull-left">
-                         <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class= "pull-left">
+                    <div class="col-md-2 text-left">
                         <div class="dropdown">
                             <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                             リスト表示方法
@@ -94,26 +88,35 @@
                                 </div>
                         </div>
                     </div>
+                    <div class ="col-md-8 text-center">
+                        
+                    </div>
+                    <div class= "col-md-2 text-right">
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
+                    </div>
                 </div>
         
                     
             
                 <div class="row">
-                    
-                        <p>{{$currentMonth}}</p>
-                    
-                    <div class="card-header text-center">
-                        
+                
+                    <div class="col-md-2 text-left">
                         <a class="btn btn-outline-secondary float-left" href="{{ action('Admin\Bought_carenderController@bought_carender_add', ['date'=> $preFirstDate]) }}">前の月</a>
+                    </div>
                     
-                    {{--<span>{{ $calendar->getTitle() }}</span>--}}
+                    <div class ="col-md-8 text-center">
+                    <p>{{$currentYear}}年 <br>   
+                    {{$currentMonth}}月</p>
+                    </div>
+                    
+                    <div class ="col-md-2 text-right">
                         @if($nxtFirstDate)
-                        <a class="btn btn-outline-secondary Cfloat-right" href="{{ url('/?date=' . $nxtFirstDate) }}">次の月</a>
+                        <a class="btn btn-outline-secondary Cfloat-right" href="{{ action('Admin\Bought_carenderController@bought_carender_add', ['date'=> $nxtFirstDate]) }}">次の月</a>
                         @endif
                     </div>
                        
                         
-                        <table class="table table-bordered">
+                        <table class="table table-bordered carenderTable">
                           <thead>
                             <tr>
                               @foreach (['日', '月', '火', '水', '木', '金', '土'] as $dayOfWeek)
@@ -127,7 +130,7 @@
                                 @if ($date["date"]->dayOfWeek == 0)
                                 <tr>
                                 @endif
-                                    <td
+                                    <td width = "14.2%" style = "height :160px"
                                         @if ($date["date"]->month != $currentMonth)
                                         class="bg-info"
                                         @endif

@@ -7,11 +7,12 @@ th {
   text-align: center;
 }
 
-td {
-  height: 100px;
-}
-
 .today {
   background: orange;
+}
+
+.carenderTable p {
+  margin: 0;
+  padding: 0;
 }
 

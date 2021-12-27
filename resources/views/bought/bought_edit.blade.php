@@ -74,7 +74,7 @@
             <main>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 mx-auto">
+                        <div class="col-md-10 mx-auto">
                             <h1 class="display-5">リストを編集する</h1>
                             <br>
                             <form action="{{ action('Admin\Bought_itemController@update') }}" method="post" enctype="multipart/form-data">
@@ -86,32 +86,32 @@
                                     </ul>
                                 @endif
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_date">買った日付は？</label>
+                                    <label class="col-md-3" for="bought_date">✔ 買った日付は？</label>
                                     <div class="col-md-4">
                                         <input type="date" class="form-control" name="date" value="{{ $bought_item_form->date }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="name">買ったものは？</label>
+                                    <label class="col-md-3" for="name">✔ 買ったものは？</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="name" value="{{ $bought_item_form->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="price">金額は？</label>
+                                    <label class="col-md-3" for="price">✔ 金額は？</label>
                                     <div class="col-md-3">
                                         <input type="text" class="form-control" name="price" value="{{ $bought_item_form->price }}">
                                     </div>
                                     <p>円</p>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_sitename">サイト名は</label>
+                                    <label class="col-md-3" for="bought_sitename">✔ サイト名は</label>
                                     <div class="col-md-3">
                                         <input type="text" class="form-control" name="sitename" value="{{ $bought_item_form->sitename }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="category">もののカテゴリーは？</label>
+                                    <label class="col-md-3" for="category">✔ もののカテゴリーは？</label>
                                     <div class="col-md-9">
                                         <div class="select_box">
                                             <select name="category_id" value="{{ $bought_item_form->category_id }}">
@@ -130,7 +130,7 @@
                                 </div>
                                 
                                 <div class="form-group row">
-                                    <label class="col-md-2" for="image">画像</label>
+                                    <label class="col-md-2" for="image">✔ ものの画像</label>
                                     <div class="col-md-10">
                                         <input type="file" class="form-control-file" name="image">
                                         <div class="form-text text-info">
