@@ -56,9 +56,9 @@ class Bought_carenderController extends Controller
   }
   
   
-  public function bought_carender()
+  public function bought_oneday(Request $request)
   {
-    
+        
       
       return redirect('bought.bought_carender');
   }

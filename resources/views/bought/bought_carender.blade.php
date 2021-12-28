@@ -73,18 +73,20 @@
             </nav>
 
             <div class="container">
-                <div class="col-md-8 mx-auto">
-                        <h1 class="display-5">買ったものリスト</h1>
-                        <br>
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                            <h1 class="display-5">買ったものリスト</h1>
+                            <br>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-2 text-left">
                         <div class="dropdown">
                             <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                            リスト表示方法
+                            月ごとに表示
                             </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@bought_list')}}">1日単位</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@bought_list')}}">日ごとに表示</a>
                                 </div>
                         </div>
                     </div>
@@ -135,7 +137,7 @@
                                         class="bg-info"
                                         @endif
                                     >
-                                        <p>{{ $date["date"]->day }}</p>
+                                        <a href= "{{action('Admin\Bought_itemController@index',['date'=>$date["date"]->toDateString()])}}"><p>{{ $date["date"]->day }}</p></a>
                                         @if(count($date["bought_items"]) >2)
                                             @for($i = 0; $i < 2; $i++)
                                                 <p>{{ $date["bought_items"][$i]->name }}</p>

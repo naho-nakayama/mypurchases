@@ -5,42 +5,23 @@
 @section('content')
 
     <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-md-2 text-left">
-                <div class="dropdown">
-                    <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                    リスト表示方法
-                    </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add')}}">月単位</a>
-                        </div>
-                </div>
-            </div>
-            <div class= "col-md-8">
-                
-            </div>
-            <div class= "col-md-2 text-right">
-                <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
-            </div>
-        </div>
+        
         
         <div class="row">
             <div class="bought_list col-md-12 mx-auto">
-                <table class="table table-boredered">
+                <table>
                     <thead>
                         <tr>
-                            <th width="15%">買った日付</th>
-                            <th width="15%">買ったもの</th>
-                            <th width="15%">値段（円）</th>
-                            <th width="15%">サイト名</th>
-                            <th width="15%">カテゴリー</th>
-                            <th width="20%">画像</th>
-                            <!--<th width="10%">操作</th>-->
+                            <th width="15%"></th>
+                            <th width="15%"></th>
+                            <th width="15%"></th>
+                            <th width="15%"></th>
+                            <th width="18%"></th>
+                            <th width="18%"></th>
                         </tr>
                     </thead>
                     
-                    <tbody>
+                    <tbody class="table table-boredered">
                             @foreach($posts as $bought_item)
                                 <tr>
                                     <td>{{ $bought_item->getFormatedDate()}}</td>

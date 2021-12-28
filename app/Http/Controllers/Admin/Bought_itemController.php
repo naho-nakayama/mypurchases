@@ -71,14 +71,19 @@ class Bought_itemController extends Controller
   {
       $cond_name = $request->cond_name;
       $cid = $request->cid;
+      $cond_day = $request->date;
       if ($cond_name != '') {
-          // キーワード検索されたら検索結果を取得する
-          $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->get();
+          // キーワード検索されたら検索結果を取得
+            $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->get();
       } else if ($cid != ''){
           //カテゴリー検索されたら検索結果取得
-          $posts = Category::find($cid)->bought_items->sortByDesc('created_at');
+            $posts = Category::find($cid)->bought_items->sortByDesc('created_at');
+      } else if($cond_day != ''){
+          //カレンダーから日付で検索されたら該当の日付のリストを取得
+            $posts = Bought_item::where('date', $cond_day)->get();
+      
       } else{
-          $posts = Bought_item::all()->sortByDesc('created_at');
+            $posts = Bought_item::all()->sortByDesc('created_at');
       }
       
       

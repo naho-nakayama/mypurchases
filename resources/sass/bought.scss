@@ -2,12 +2,18 @@ body{
     font-family:"ヒラギノ丸ゴシック","Noto Sans CJK JP","游ゴシック","ヒラギノ角ゴシック",sans-serif;
     font-size:15px;
     line-height:2.5;
+    
+    background-color: #FFF;
 }
 
 .display-5{
 background:linear-gradient(transparent 70%, #FFFF00 0%);
 }
 
+//固定ヘッダー
+header{
+  background-color: #FFF;
+}
 h1{
     text-align:center;
 }

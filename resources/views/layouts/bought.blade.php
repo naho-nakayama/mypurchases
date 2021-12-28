@@ -28,59 +28,55 @@
     </head>
     <body>
         <div id="app">  {{-- Vue.js用 Javascriptでエラー出ないため--}}
-             <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
-                <div class="container">
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            {{-- 以下を追記12ユーザー認証実装 --}}
-                        <!-- Authentication Links -->
-                        {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
-                        @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
-                        {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
-                        @else
-                            <li class="welcome">ようこそ</li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('messages.Logout') }}
+            <header class ="sticky-top">
+                <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
+                    <div class="container">
+                        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav mr-auto">
+        
+                            </ul>
+        
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                {{-- 以下を追記12ユーザー認証実装 --}}
+                            <!-- Authentication Links -->
+                            {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
+                            @guest
+                                <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
+                            {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
+                            @else
+                                <li class="welcome">ようこそ</li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                            @endguest
-                            {{-- 以上までを追記 --}}
-                        </ul>
+        
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('messages.Logout') }}
+                                        </a>
+        
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                                @endguest
+                                {{-- 以上までを追記 --}}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-
-
-
-            <main>
+                </nav>
                 <div class="container">
-                    <div class="row row align-items-center">
-                        <div class="col align-self-start">
+                    <div class="row">
+                        <div class="col-md-10 mx-auto">
                             <h1 class="display-5">買ったものリスト</h1>
                         </div>
                     </div>
-                
                 
                     <div class="row">
                         <div class="col-8">
@@ -121,8 +117,49 @@
                             </form>    
                         </div>
                     </div>
-                
+                    
+                    <br>
+                    <div class="row">
+                        <div class="col-md-2 text-left">
+                            <div class="dropdown">
+                                <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                日ごとに表示
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add')}}">月ごとに表示</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class= "col-md-8">
+                            
+                        </div>
+                        <div class= "col-md-2 text-right">
+                            <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="bought_list col-md-12 mx-auto">
+                            <table class="table table-boredered">
+                                <thead>
+                                    <tr>
+                                        <th width="15%">買った日付</th>
+                                        <th width="15%">買ったもの</th>
+                                        <th width="15%">値段（円）</th>
+                                        <th width="15%">サイト名</th>
+                                        <th width="18%">カテゴリー</th>
+                                        <th width="18%">画像</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+            </header>
+
+
+            <main>
+                
                     {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                     @yield('content')
             

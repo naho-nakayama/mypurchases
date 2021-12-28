@@ -4,10 +4,15 @@ body {
   font-family: "\30D2\30E9\30AE\30CE\4E38\30B4\30B7\30C3\30AF", "Noto Sans CJK JP", "\6E38\30B4\30B7\30C3\30AF", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", sans-serif;
   font-size: 15px;
   line-height: 2.5;
+  background-color: #FFF;
 }
 
 .display-5 {
   background: linear-gradient(transparent 70%, #FFFF00 0%);
+}
+
+header {
+  background-color: #FFF;
 }
 
 h1 {
