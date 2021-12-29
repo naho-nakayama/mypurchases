@@ -10,7 +10,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         {{-- 各ページごとにtitleタグを入れるために@yieldで空けておきます。 --}}
-        <title>買ったものリスト登録画面</title>
+        <title>買いたいものリスト登録画面</title>
 
         <!-- Scripts -->
          {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
@@ -31,7 +31,6 @@
         <div id="app">
             <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
                     <div class="container">
-                        
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav mr-auto">
@@ -88,13 +87,7 @@
                                 @endif
                                 <div class="list_register_box">
                                     <div class="form-group row">
-                                        <label class="col-md-3" for="bought_date">✔︎️️ 買った日付は？</label>
-                                        <div class="col-md-4">
-                                            <input type="date" class="form-control" name="date" value="{{ old('date',  Carbon\Carbon::today()->format('Y-m-d')) }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3" for="name">✔ 買ったものは？</label>
+                                        <label class="col-md-3" for="name">✔ 買いたいものは？</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                         </div>
@@ -160,7 +153,7 @@
                                     
                                 </div>
                                 <div class ="col-md-3 text-right">
-                                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_list') }}'">⬅︎リストに戻る</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Want_itemController@bought_list') }}'">⬅︎リストに戻る</button>
                                 </div>
                             </div>
                         </div>

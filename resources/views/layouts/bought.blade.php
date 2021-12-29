@@ -31,43 +31,41 @@
             <header class ="sticky-top">
                 <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
                     <div class="container">
-                        
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav mr-auto">
-        
-                            </ul>
-        
-                            <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                {{-- 以下を追記12ユーザー認証実装 --}}
-                            <!-- Authentication Links -->
-                            {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
-                            @guest
-                                <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
-                            {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
-                            @else
-                                <li class="welcome">ようこそ</li>
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-        
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('messages.Logout') }}
+                                {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
+                                @guest
+                                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
+                                {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
+                                @else
+                                    <li class="welcome">ようこそ</li>
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
-        
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+            
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('messages.Logout') }}
+                                            </a>
+            
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
                                 @endguest
-                                {{-- 以上までを追記 --}}
                             </ul>
+                                
+                            <!-- Right Side Of Navbar -->
+                            <nuv class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{{ action('Admin\Want_itemController@index') }}">買いたいものリストへ➡︎</a>
+                                </li>
+                            </nuv>
                         </div>
                     </div>
                 </nav>
@@ -163,7 +161,7 @@
                     {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                     @yield('content')
             
-            
+                    
             
             </main>
         </div>

@@ -44,3 +44,12 @@ Route::group(['prefix' => 'bought', 'middleware' => 'auth'], function() {
     Route::get('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth');
     Route::post('bought_carender', 'Admin\Bought_carenderController@bought_carender')->middleware('auth');
 });
+
+Route::group(['prefix' => 'want', 'middleware' => 'auth'], function() {
+    Route::get('want_list', 'Admin\Want_itemController@index')->middleware('auth'); //キーワード検索のリスト表示と買いたいものの実際のリスト表示のルーティング
+    Route::post('want_list', 'Admin\Want_itemController@want_list')->middleware('auth');
+    Route::get('want_create', 'Admin\Want_itemController@want_add')->middleware('auth');
+    Route::post('want_create', 'Admin\Want_itemController@want_create')->middleware('auth');
+    
+  
+});

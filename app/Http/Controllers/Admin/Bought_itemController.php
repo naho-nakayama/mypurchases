@@ -13,6 +13,7 @@ use Carbon\Carbon;
 //カテゴリーのテーブルを使うためモデル名を記述
 use App\Category;
 
+
 class Bought_itemController extends Controller
 {
    public function bought_list_add()
@@ -73,17 +74,17 @@ class Bought_itemController extends Controller
       $cid = $request->cid;
       $cond_day = $request->date;
       if ($cond_name != '') {
-          // キーワード検索されたら検索結果を取得
-            $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->get();
+          // キーワード検索されたら検索結果を取得する
+            $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->paginate(10);
       } else if ($cid != ''){
           //カテゴリー検索されたら検索結果取得
-            $posts = Category::find($cid)->bought_items->sortByDesc('created_at');
+            $posts = Category::find($cid)->bought_items->sortByDesc('created_at')->paginate(10);
       } else if($cond_day != ''){
-          //カレンダーから日付で検索されたら該当の日付のリストを取得
-            $posts = Bought_item::where('date', $cond_day)->get();
+          //カレンダーから日付で検索されたら該当のリスト
+            $posts = Bought_item::where('date', $cond_day)->paginate(10);
       
       } else{
-            $posts = Bought_item::all()->sortByDesc('created_at');
+            $posts = Bought_item::orderBy('created_at','desc')->paginate(10);
       }
       
       
