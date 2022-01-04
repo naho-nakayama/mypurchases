@@ -18,24 +18,39 @@ class Bought_carenderController extends Controller
         $now = Carbon::now();
         }
         
-    $dateStr = sprintf('%04d-%02d-01', $now->year, $now->month);
-    $date = new Carbon( $dateStr);
-    // カレンダーを四角形にするため、前月となる左上の隙間用のデータを入れるためずらす
-    $date->subDay($date->dayOfWeek);
-    // 同上。右下の隙間のための計算。
-    $count = 31 + $date->dayOfWeek;
-    $count = ceil($count / 7) * 7;
-    $dates = [];
+        $dateStr = sprintf('%04d-%02d-01', $now->year, $now->month);
+        $date = new Carbon( $dateStr);
+        // カレンダーを四角形にするため、前月となる左上の隙間用のデータを入れるためずらす
+        $date->subDay($date->dayOfWeek);
+        // 同上。右下の隙間のための計算。
+        $count = 31 + $date->dayOfWeek;
+        $count = ceil($count / 7) * 7;
+        $dates = [];
 
-   
-    for ($i = 0; $i < $count; $i++, $date->addDay()) {
-       
-        $dates[] = [
-            "date"=> $date->copy(),
-            "bought_items" => Bought_item::whereDate('date', '=', $date)->get()
-        ];
+        //以下カレンダーでのカテゴリー、キーワード検索
+        $query = Bought_item::query();
         
+        if($request->cond_name){
+            $query->where('name','like','%'. $request->cond_name.'%')->orWhere('sitename','like','%'.$request->cond_name.'%');
+        }elseif($request->cid){
+            $query->where('category_id',$request->cid);
+        }else{
+            $query = Bought_item::query();
         }
+        $bought_items = $query->get();
+        // dd($bought_items,$request->cond_name);
+        
+        for ($i = 0; $i < $count; $i++, $date->addDay()) {
+        
+            $dates[] = [
+                "date"=> $date->copy(),
+                "bought_items" => $bought_items->filter(function ($value, $key)use($date) {
+                   
+                    return $value->date == $date;
+                })
+            ];
+        }
+        // dd($dates,$bought_items,$count);
         
         //前の月を取ってくる↓
         $tmpDate = new Carbon($dateStr);

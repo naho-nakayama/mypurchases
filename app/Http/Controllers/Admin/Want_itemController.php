@@ -31,12 +31,12 @@ class Want_itemController extends Controller
     public function want_create(Request $request)
     {
         //Varidationを行う
-        $this->varidate($request, Want_item::$rules);
+        $this->validate($request, Want_item::$rules);
         
         $want_items = new Want_item;
         $form = $request->all();
         
-        // create画面のフォームから画像が送信されてきたら、保存して、$bought_items->image_path に画像のパスを保存する
+        // create画面のフォームから画像が送信されてきたら、保存して、$want_items->image_path に画像のパスを保存する
         if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
         $want_items->image_path = basename($path);

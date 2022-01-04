@@ -61,11 +61,11 @@
                             </ul>
                                 
                             <!-- Right Side Of Navbar -->
-                            <nuv class="navbar-nav ml-auto">
+                            <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ action('Admin\Want_itemController@index') }}">買いたいものリストへ➡︎</a>
+                                    <a class="nav-link active toWant" href="{{ action('Admin\Want_itemController@index') }}">買いたいものリストへ➡︎</a>
                                 </li>
-                            </nuv>
+                            </ul>
                         </div>
                     </div>
                 </nav>

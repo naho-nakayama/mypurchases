@@ -40,6 +40,7 @@ Route::group(['prefix' => 'bought', 'middleware' => 'auth'], function() {
     Route::get('bought_edit', 'Admin\Bought_itemController@edit')->middleware('auth');
     Route::post('bought_edit', 'Admin\Bought_itemController@update')->middleware('auth');
     Route::get('delete', 'Admin\Bought_itemController@delete')->middleware('auth');
+    Route::get('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth'); //カレンダー表示のアクション
     
     Route::get('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth');
     Route::post('bought_carender', 'Admin\Bought_carenderController@bought_carender')->middleware('auth');
@@ -51,5 +52,5 @@ Route::group(['prefix' => 'want', 'middleware' => 'auth'], function() {
     Route::get('want_create', 'Admin\Want_itemController@want_add')->middleware('auth');
     Route::post('want_create', 'Admin\Want_itemController@want_create')->middleware('auth');
     
-  
 });
+

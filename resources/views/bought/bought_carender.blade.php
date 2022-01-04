@@ -76,6 +76,47 @@
                             <br>
                     </div>
                 </div>
+                
+                <div class="row">
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4">
+                            <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_carenderController@bought_carender_add') }}" method="get">
+                                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Purchases_Sitename_Input') }}" aria-label="Purchases_Sitename_Input" name="cond_name" >
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_carenderController@bought_carender_add') }}" method="get">
+                            <div class="dropdown" name = "cid">
+                                <button class="btn btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                カテゴリ検索
+                                </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=1'}}">衣類</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=2'}}">食べ物・飲み物</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=3'}}">本</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=4'}}">日用品</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=5'}}">雑貨</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=6'}}">アクセサリー</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=7'}}">化粧品・スキンケア</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=8'}}">ゲーム</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=9'}}">機器</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add') . '?cid=10'}}">その他</a>
+                                    </div>
+                                    {{ csrf_field() }}
+                            </div>
+                        </form>    
+                    </div>
+                </div>
+                
                 <div class="row">
                     <div class="col-md-2 text-left">
                         <div class="dropdown">

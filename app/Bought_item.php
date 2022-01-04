@@ -8,6 +8,9 @@ use Carbon\Carbon;
 class Bought_item extends Model
 {
     protected $guarded = array('id');
+    protected $dates = [
+        'date',
+    ];
 
     // bought_items tableの中身
     public static $rules = array(

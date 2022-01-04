@@ -74,7 +74,7 @@
                         <div class="col-md-10 mx-auto">
                             <h1 class="display-5">リストに追加する</h1>
                             <br>
-                            <form action="{{ action('Admin\Bought_itemController@bought_create') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ action('Admin\Want_itemController@want_create') }}" method="post" enctype="multipart/form-data">
             
              　{{--Validationでエラーを見つけたときには、Laravel が自動的に $errors という変数にエラーを格納--}}
             
@@ -122,7 +122,7 @@
                                                     <option value="10">その他</option>
                                                 </select>
                                             </div>
-                                            <!--<input type="text" class="form-control" name="name" value="{{ old('name') }}">-->
+                                           
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -153,7 +153,7 @@
                                     
                                 </div>
                                 <div class ="col-md-3 text-right">
-                                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Want_itemController@bought_list') }}'">⬅︎リストに戻る</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Want_itemController@want_list') }}'">⬅︎リストに戻る</button>
                                 </div>
                             </div>
                         </div>
