@@ -68,17 +68,63 @@ class Want_itemController extends Controller
       
       if ($cond_name != '') {
           // キーワード検索されたら検索結果を取得する
-            $posts = Want_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->get();
+            $posts = Want_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->paginate(10);
       } else if ($cid != ''){
           //カテゴリー検索されたら検索結果取得
-            $posts = Category::find($cid)->want_items->sortByDesc('created_at');
+            $posts = Want_item::where('category_id',$cid)->paginate(10);
       
       } else{
-            $posts = Want_item::all()->sortByDesc('created_at');
+            $posts = Want_item::orderBy('created_at','desc')->paginate(10);
       }
       
       
       return view('want.want_list', ['posts' => $posts, 'cond_name' => $cond_name]);
+  }
+  
+    public function edit(Request $request)
+  {
+      // Want_item Modelからデータを取得する
+      $want_item = Want_item::find($request->id);
+      //categoriesテーブルからCategoryモデルを使ってデータを全て取得して変数に代入
+      $category = Category::all();
+      if (empty($want_item)) {
+        abort(404);    
+      }
+      return view('want.want_edit', ['want_item_form' => $want_item ,'category'=>$category]);
+  }
+  
+    public function update(Request $request)
+  {
+      // Validationをかける
+      $this->validate($request, Want_item::$rules);
+      // Want_item Modelからデータを検索して取得する
+      $want_item = Want_item::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $want_item_form = $request->all();
+      if ($request->remove == 'true') {
+          $want_item_form['image_path'] = null;
+      } elseif ($request->file('image')) {
+          $path = $request->file('image')->store('public/image');
+          $want_item_form['image_path'] = basename($path);
+      } else {
+          $want_item_form['image_path'] = $want_item->image_path;
+      }
+
+      unset($want_item_form['image']);
+      unset($want_item_form['remove']);
+      unset($want_item_form['_token']);
+      // 該当するデータを上書きして保存する
+      $want_item->fill($want_item_form)->save();
+      return redirect('want/want_list');
+  }
+  
+    public function delete(Request $request)
+  {
+      // 該当するBought_item Modelを取得
+      $want_item = Want_item::find($request->id);
+      // 削除する
+      $want_item->delete();
+      return redirect('want/want_list');
   }
     
 }

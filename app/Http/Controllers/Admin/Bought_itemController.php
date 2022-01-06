@@ -78,7 +78,7 @@ class Bought_itemController extends Controller
             $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->paginate(10);
       } else if ($cid != ''){
           //カテゴリー検索されたら検索結果取得
-            $posts = Category::find($cid)->bought_items->sortByDesc('created_at')->paginate(10);
+            $posts = Bought_item::where('category_id',$cid)->orderBy('created_at','desc')->paginate(10);
       } else if($cond_day != ''){
           //カレンダーから日付で検索されたら該当のリスト
             $posts = Bought_item::where('date', $cond_day)->paginate(10);

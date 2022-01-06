@@ -51,6 +51,8 @@ Route::group(['prefix' => 'want', 'middleware' => 'auth'], function() {
     Route::post('want_list', 'Admin\Want_itemController@want_list')->middleware('auth');
     Route::get('want_create', 'Admin\Want_itemController@want_add')->middleware('auth');
     Route::post('want_create', 'Admin\Want_itemController@want_create')->middleware('auth');
-    
+    Route::get('want_edit', 'Admin\Want_itemController@edit')->middleware('auth');
+    Route::post('want_edit', 'Admin\Want_itemController@update')->middleware('auth');
+    Route::get('delete', 'Admin\Want_itemController@delete')->middleware('auth');
 });
 

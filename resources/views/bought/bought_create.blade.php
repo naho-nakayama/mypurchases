@@ -90,7 +90,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3" for="bought_date">✔︎️️ 買った日付は？</label>
                                         <div class="col-md-4">
-                                            <input type="date" class="form-control" name="date" value="{{ old('date',  Carbon\Carbon::today()->format('Y-m-d')) }}">
+                                            <input type="date" class="form-control" name="date" value="{{ old('date', Carbon\Carbon::today()->format('Y-m-d'))}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">

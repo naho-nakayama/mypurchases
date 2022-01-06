@@ -29,15 +29,19 @@ class Bought_carenderController extends Controller
 
         //以下カレンダーでのカテゴリー、キーワード検索
         $query = Bought_item::query();
+        $cond_params = []; //検索条件を保持してリンクに渡すための連想配列
         
         if($request->cond_name){
             $query->where('name','like','%'. $request->cond_name.'%')->orWhere('sitename','like','%'.$request->cond_name.'%');
+            $cond_params["cond_name"] = $request->cond_name;
         }elseif($request->cid){
             $query->where('category_id',$request->cid);
+            $cond_params["cid"] = $request->cid;
         }else{
             $query = Bought_item::query();
         }
         $bought_items = $query->get();
+        
         // dd($bought_items,$request->cond_name);
         
         for ($i = 0; $i < $count; $i++, $date->addDay()) {
@@ -67,7 +71,7 @@ class Bought_carenderController extends Controller
         
         
       return view('bought.bought_carender',['dates' =>$dates,'currentMonth'=> $now->month,
-        'preFirstDate' => $preFirstDate,'nxtFirstDate' => $nxtFirstDate, 'currentYear'=> $now->year]);
+        'preFirstDate' => $preFirstDate,'nxtFirstDate' => $nxtFirstDate, 'currentYear'=> $now->year, 'cond_params'=>$cond_params]);
   }
   
   

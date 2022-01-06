@@ -49739,10 +49739,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/want.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/want.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/front.scss ./resources/sass/bought.scss ./resources/sass/bought_carender.scss ***!
-  \************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/front.scss ./resources/sass/bought.scss ./resources/sass/bought_carender.scss ./resources/sass/want.scss ***!
+  \***************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49750,7 +49761,8 @@ __webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/js/app.
 __webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/sass/front.scss */"./resources/sass/front.scss");
 __webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/sass/bought.scss */"./resources/sass/bought.scss");
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/sass/bought_carender.scss */"./resources/sass/bought_carender.scss");
+__webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/sass/bought_carender.scss */"./resources/sass/bought_carender.scss");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/mypurchases/resources/sass/want.scss */"./resources/sass/want.scss");
 
 
 /***/ })

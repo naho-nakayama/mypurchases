@@ -10,7 +10,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         {{-- 各ページごとにtitleタグを入れるために@yieldで空けておきます。 --}}
-        <title>買ったものリスト編集画面</title>
+        <title>買いたいものリスト編集画面</title>
 
         <!-- Scripts -->
          {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
@@ -24,7 +24,7 @@
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ asset('css/bought.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/want.css') }}" rel="stylesheet">
     </head>
     
     <body>
@@ -34,7 +34,7 @@
                         
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
-                             <ul class="navbar-nav mr-auto">
+                            <ul class="navbar-nav mr-auto">
                                 {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
                                 @guest
                                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
@@ -61,7 +61,7 @@
                             </ul>
     
                             <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
+                             <ul class="navbar-nav ml-auto">
     
                             </ul>
                         </div>
@@ -74,7 +74,7 @@
                         <div class="col-md-10 mx-auto">
                             <h1 class="display-5">リストを編集する</h1>
                             <br>
-                            <form action="{{ action('Admin\Bought_itemController@update') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ action('Admin\Want_itemController@update') }}" method="post" enctype="multipart/form-data">
                                 @if (count($errors) > 0)
                                     <ul>
                                         @foreach($errors->all() as $e)
@@ -83,39 +83,33 @@
                                     </ul>
                                 @endif
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_date">✔ 買った日付は？</label>
-                                    <div class="col-md-4">
-                                        <input type="date" class="form-control" name="date" value="{{ $bought_item_form->date->toDateString() }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3" for="name">✔ 買ったものは？</label>
+                                    <label class="col-md-3" for="name">✔ 買いたいものは？</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="name" value="{{ $bought_item_form->name }}">
+                                        <input type="text" class="form-control" name="name" value="{{ $want_item_form->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="price">✔ 金額は？</label>
                                     <div class="col-md-3">
-                                        <input type="text" class="form-control" name="price" value="{{ $bought_item_form->price }}">
+                                        <input type="text" class="form-control" name="price" value="{{ $want_item_form->price }}">
                                     </div>
                                     <p>円</p>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="bought_sitename">✔ サイト名は</label>
                                     <div class="col-md-3">
-                                        <input type="text" class="form-control" name="sitename" value="{{ $bought_item_form->sitename }}">
+                                        <input type="text" class="form-control" name="sitename" value="{{ $want_item_form->sitename }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="category">✔ もののカテゴリーは？</label>
                                     <div class="col-md-9">
                                         <div class="select_box">
-                                            <select name="category_id" value="{{ $bought_item_form->category_id }}">
+                                            <select name="category_id" value="{{ $want_item_form->category_id }}">
                                                 
                                                 @foreach($category as $value)
                                                     @php $selected = "";@endphp
-                                                    @if($value->id == $bought_item_form->category_id)
+                                                    @if($value->id == $want_item_form->category_id)
                                                     @php $selected ="selected";@endphp
                                                     @endif
                                                 <option value="{{ $value->id}}" {{$selected}}>{{$value->name}}</option>
@@ -131,7 +125,7 @@
                                     <div class="col-md-10">
                                         <input type="file" class="form-control-file" name="image">
                                         <div class="form-text text-info">
-                                            設定中: {{ $bought_item_form->image_path }}
+                                            設定中: {{ $want_item_form->image_path }}
                                         </div>
                                         <div class="form-check">
                                             <label class="form-check-label">
@@ -142,7 +136,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-10">
-                                        <input type="hidden" name="id" value="{{ $bought_item_form->id }}">
+                                        <input type="hidden" name="id" value="{{ $want_item_form->id }}">
                                         {{ csrf_field() }}
                                         <input type="submit" class="btn btn-outline-info btn-lg" value="更新">
                                     </div>
@@ -153,13 +147,14 @@
                                     
                                 </div>
                                 <div class ="col-md-3 text-right">
-                                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_list') }}'">⬅︎リストに戻る</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='{{ action('Admin\Want_itemController@want_list') }}'">⬅︎リストに戻る</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
+            
         </div>
     </body>
 </html>

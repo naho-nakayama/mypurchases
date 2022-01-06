@@ -5,8 +5,6 @@
 @section('content')
 
     <div class="container">
-        
-        
         <div class="row">
             <div class="bought_list col-md-12 mx-auto">
                 <table>
@@ -47,10 +45,13 @@
             </div>    
         </div>
         <div class ="row">
-            <div class ="col-md-12">
+            <div class ="col-md-5 text-left">
+            </div>
+            <div class ="col-md-4 text-cemter pagenate">
                 {{ $posts->links() }}
             </div>
+            <div class ="col-md-3 text-right">
+            </div>
         </div>
-        
     </div>
 @endsection

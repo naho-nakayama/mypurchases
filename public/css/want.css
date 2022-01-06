@@ -20,7 +20,7 @@ h1 {
   top: 9px;
 }
 
-.arrowIcon_right {
+.arrowIcon_left {
   box-sizing: border-box;
   display: inline-block;
   position: relative;
@@ -29,11 +29,11 @@ h1 {
   border-style: solid;
   border-width: 2.5px 2.5px 0 0;
   border-color: black;
-  transform: rotate(45deg);
+  transform: rotate(225deg);
 }
 
 .display-5 {
-  background: linear-gradient(transparent 70%, #FFFF00 0%);
+  background: linear-gradient(transparent 70%, #ffbf7f 0%);
 }
 
 .select_box {
@@ -103,9 +103,5 @@ h1 {
 
 .input-group {
   width: 300px;
-}
-
-.pagenate {
-  color: #333333;
 }
 
