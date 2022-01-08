@@ -180,6 +180,7 @@
                                             @for($i = 0; $i < 2; $i++)
                                                 <p>{{ $date["bought_items"][$i]->name }}</p>
                                             @endfor
+                                            <p>他{{count($date["bought_items"])-2}}件</p>
                                         @else
                                             @foreach($date["bought_items"] as $bought_item)
                                                  <p>{{ $bought_item->name }}</p>

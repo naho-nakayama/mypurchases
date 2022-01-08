@@ -53,7 +53,9 @@
                 </div>
             </div>
             
-            
+            <div class="row cloud">
+                
+            </div>
             <div class=row>
                 <div class="text-right">
                     <img src ="https://i.gyazo.com/8a7e7017351a66d1a29d7acb1f299b34.jpg" alt="ペンギンのイラスト" width=46%>    
