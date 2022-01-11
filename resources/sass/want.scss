@@ -36,9 +36,20 @@ h1{
 
 //買いたいものリストの題名の下線
 .display-5{
-background:linear-gradient(transparent 70%, #ffbf7f 0%);
+background:linear-gradient(transparent 60%, #ffbf7f 0%);
+}
+//買いたいものリストの項目の背景
+.listMenu{
+   background-color:#f3f3f3;
 }
 
+//買いたいものリストの作成画面と編集画面のエラーメッセージのCSS
+.errorMessages li{
+  list-style:none; /* デフォルトのリストスタイルを消す */
+}
+.errorMessages li{
+  color: #F198A4; /* リストのスタイルの色 */
+}
 
 //買いたいものリスト編集画面のカテゴリーのCSS
 .select_box {

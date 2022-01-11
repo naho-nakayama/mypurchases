@@ -1,24 +1,53 @@
-
-h3 {
-    margin-bottom: 30px;
-}
+//カレンダーの日付を生成しているところ
 th {
     height: 30px;
     text-align: center;
 }
 
-.today {
-    background: orange;
+//カレンダーの表示方法のボタン（月ごとに表示）のCSS
+.wayOfdisplay{
+    margin-top:10px;
 }
-       
+//リストに追加ボタンのCSS
+.addList{
+   margin-top:10px; 
+}
+//前の月ボタンのCSS
+.lastMonth{
+    margin-top:40px;
+}
+//次の月ボタンのCSS
+.nextMonth{
+   margin-top:40px; 
+}
+//カレンダーの現在表示している年と月
+.yearAndmonth p{
+    padding:0;
+    margin:0;
+}
+.year{
+    font-size:15px;
+}
+.month{
+    font-size:20px;
+    display: inline-block;
+    // background: linear-gradient(transparent 50%, #a8eaff 0%);
+    border-top:2px solid #a8eaff;
+}
+//カレンダーの曜日のCSS
+.weekCreate{
+    background-color:#f3f3f3;
+}
+//カレンダーの中の買ったものの名前の表示       
 .carenderTable p{
     margin:0;
     padding:0;
 }
-
+//カレンダーの日付の数字の表示
 .carenderTable a{
     color:black;
     
 }
+
 
 

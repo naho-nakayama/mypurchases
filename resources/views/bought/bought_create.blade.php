@@ -73,14 +73,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10 mx-auto">
-                            <h1 class="display-5">リストに追加する</h1>
+                            <h1 class="display-5">買ったものリストに追加する</h1>
                             <br>
                             <form action="{{ action('Admin\Bought_itemController@bought_create') }}" method="post" enctype="multipart/form-data">
             
              　{{--Validationでエラーを見つけたときには、Laravel が自動的に $errors という変数にエラーを格納--}}
             
                                 @if (count($errors) > 0)
-                                    <ul>
+                                    <ul class = "errorMessages">
                                         @foreach($errors->all() as $e)
                                             <li>{{ $e }}</li>
                                         @endforeach
@@ -88,13 +88,13 @@
                                 @endif
                                 <div class="list_register_box">
                                     <div class="form-group row">
-                                        <label class="col-md-3" for="bought_date">✔︎️️ 買った日付は？</label>
+                                        <label class="col-md-3" for="bought_date">✔︎️️ 日付は？</label>
                                         <div class="col-md-4">
                                             <input type="date" class="form-control" name="date" value="{{ old('date', Carbon\Carbon::today()->format('Y-m-d'))}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3" for="name">✔ 買ったものは？</label>
+                                        <label class="col-md-3" for="name">✔ ものの名前は？</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                         </div>
@@ -129,7 +129,6 @@
                                                     <option value="10">その他</option>
                                                 </select>
                                             </div>
-                                            <!--<input type="text" class="form-control" name="name" value="{{ old('name') }}">-->
                                         </div>
                                     </div>
                                     <div class="form-group row">

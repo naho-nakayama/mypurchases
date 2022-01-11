@@ -72,24 +72,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10 mx-auto">
-                            <h1 class="display-5">リストを編集する</h1>
+                            <h1 class="display-5">買いたいものリストを編集する</h1>
                             <br>
                             <form action="{{ action('Admin\Bought_itemController@update') }}" method="post" enctype="multipart/form-data">
                                 @if (count($errors) > 0)
-                                    <ul>
+                                    <ul class="errorMessages">
                                         @foreach($errors->all() as $e)
                                             <li>{{ $e }}</li>
                                         @endforeach
                                     </ul>
                                 @endif
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_date">✔ 買った日付は？</label>
+                                    <label class="col-md-3" for="bought_date">✔ 日付は？</label>
                                     <div class="col-md-4">
                                         <input type="date" class="form-control" name="date" value="{{ $bought_item_form->date->toDateString() }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="name">✔ 買ったものは？</label>
+                                    <label class="col-md-3" for="name">✔ ものの名前は？</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="name" value="{{ $bought_item_form->name }}">
                                     </div>
@@ -102,7 +102,7 @@
                                     <p>円</p>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="bought_sitename">✔ サイト名は</label>
+                                    <label class="col-md-3" for="bought_sitename">✔ サイト名は？</label>
                                     <div class="col-md-3">
                                         <input type="text" class="form-control" name="sitename" value="{{ $bought_item_form->sitename }}">
                                     </div>

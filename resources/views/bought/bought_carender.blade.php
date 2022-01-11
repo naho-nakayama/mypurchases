@@ -118,20 +118,20 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-md-2 text-left">
+                    <div class="col-md-2 text-left wayOfdisplay">
                         <div class="dropdown">
                             <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                            月ごとに表示
+                            カレンダーで表示
                             </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@bought_list')}}">日ごとに表示</a>
-                                </div>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@bought_list')}}">日ごとに表示</a>
+                            </div>
                         </div>
                     </div>
                     <div class ="col-md-8 text-center">
                         
                     </div>
-                    <div class= "col-md-2 text-right">
+                    <div class= "col-md-2 text-right addList">
                         <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
                     </div>
                 </div>
@@ -140,16 +140,16 @@
             
                 <div class="row">
                 
-                    <div class="col-md-2 text-left">
+                    <div class="col-md-2 text-left lastMonth">
                         <a class="btn btn-outline-secondary float-left" href="{{ action('Admin\Bought_carenderController@bought_carender_add', array_merge(['date'=> $preFirstDate],$cond_params)) }}">前の月</a>
                     </div>
                     
-                    <div class ="col-md-8 text-center">
-                    <p>{{$currentYear}}年 <br>   
-                    {{$currentMonth}}月</p>
+                    <div class ="col-md-8 text-center yearAndmonth">
+                        <p class ="year">{{$currentYear}}年</p>  
+                        <p class ="month">{{$currentMonth}}月</p>
                     </div>
                     
-                    <div class ="col-md-2 text-right">
+                    <div class ="col-md-2 text-right nextMonth">
                         @if($nxtFirstDate)
                         <a class="btn btn-outline-secondary Cfloat-right" href="{{ action('Admin\Bought_carenderController@bought_carender_add', array_merge(['date'=> $nxtFirstDate],$cond_params)) }}">次の月</a>
                         @endif
@@ -158,7 +158,7 @@
                         
                         <table class="table table-bordered carenderTable">
                           <thead>
-                            <tr>
+                            <tr class ="weekCreate">
                               @foreach (['日', '月', '火', '水', '木', '金', '土'] as $dayOfWeek)
                               <th>{{ $dayOfWeek }}</th>
                               @endforeach

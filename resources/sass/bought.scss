@@ -1,11 +1,12 @@
+
 body{
     font-family:"ヒラギノ丸ゴシック","Noto Sans CJK JP","游ゴシック","ヒラギノ角ゴシック",sans-serif;
     font-size:15px;
     line-height:2.5;
     
     background-color: #FFF;
+    
 }
-
 
 
 //固定ヘッダー
@@ -36,10 +37,24 @@ h1{
   
 //買ったものリストの題名の下線
 .display-5{
-background:linear-gradient(transparent 70%, #FFFF00 0%);
+background:linear-gradient(transparent 60%, #FFFF00 0%);
 }
 
-//買ったものリスト編集画面のカテゴリーのCSS
+//買ったものリストの項目の背景
+.listMenu{
+  background-color:#f3f3f3;
+}
+
+
+//買ったものリストの作成画面と編集画面のエラーメッセージのCSS
+.errorMessages li{
+  list-style:none; /* デフォルトのリストスタイルを消す */
+}
+.errorMessages li{
+  color: #F198A4; /* リストのスタイルの色 */
+}
+
+//買ったものリスト作成画面と編集画面のカテゴリーのCSS
 .select_box {
   overflow: hidden;
   width: 300px; /*** セレクトボックスの横幅 ***/

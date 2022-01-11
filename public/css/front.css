@@ -57,6 +57,9 @@ p {
 }
 
 .cloud {
-  background-image: url(//i.gyazo.com/6473282a71d46bd72bd72cf36ec78896.jpg);
+  width: 100%;
+  background-image: url("https://i.gyazo.com/6473282a71d46bd72bd72cf36ec78896.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom 100px;
 }
 

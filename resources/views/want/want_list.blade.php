@@ -129,7 +129,7 @@
                     
                     <div class="row">
                         <div class="bought_list col-md-12 mx-auto">
-                            <table class="table table-boredered">
+                            <table class="table table-boredered listMenu">
                                 <thead>
                                     <tr>
                                         <th width="15%">買いたいもの</th>
@@ -173,10 +173,10 @@
                                            
                                            <td>
                                                 <div>
-                                                    <a href="{{ action('Admin\Want_itemController@edit', ['id' => $want_item->id]) }}">編集</a>
+                                                    <button type="button"class="btn btn-outline-secondary" onclick="location.href='{{ action('Admin\Want_itemController@edit', ['id' => $want_item->id]) }}'">編集</button>
                                                 </div>
                                                 <div>
-                                                    <a href="{{ action('Admin\Want_itemController@delete', ['id' => $want_item->id]) }}">削除</a>
+                                                    <button type="button"class="btn btn-outline-secondary" onclick="location.href='{{ action('Admin\Want_itemController@delete', ['id' => $want_item->id]) }}'">削除</button>
                                                 </div>
                                             </td>
                                         </tr>

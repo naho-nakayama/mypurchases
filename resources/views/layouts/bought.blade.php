@@ -24,7 +24,7 @@
         {{-- 買ったものリストのCSSを読み込みます --}}
         <link href="{{ asset('css/bought.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body class ="boughtList">
         <div id="app">  {{-- Vue.js用 Javascriptでエラー出ないため--}}
             <header class ="sticky-top">
                 <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
@@ -122,7 +122,7 @@
                                 日ごとに表示
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add')}}">月ごとに表示</a>
+                                    <a class="dropdown-item" href="{{ action('Admin\Bought_carenderController@bought_carender_add')}}">カレンダーで表示</a>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                     
                     <div class="row">
                         <div class="bought_list col-md-12 mx-auto">
-                            <table class="table table-boredered">
+                            <table class="table table-boredered listMenu">
                                 <thead>
                                     <tr>
                                         <th width="15%">買った日付</th>
@@ -145,6 +145,7 @@
                                         <th width="15%">サイト名</th>
                                         <th width="18%">カテゴリー</th>
                                         <th width="18%">画像</th>
+                                        <th width="4%"></th>
                                     </tr>
                                 </thead>
                             </table>

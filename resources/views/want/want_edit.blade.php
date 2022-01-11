@@ -75,8 +75,8 @@
                             <h1 class="display-5">リストを編集する</h1>
                             <br>
                             <form action="{{ action('Admin\Want_itemController@update') }}" method="post" enctype="multipart/form-data">
-                                @if (count($errors) > 0)
-                                    <ul>
+                                 @if (count($errors) > 0)
+                                    <ul class= "errorMessages">
                                         @foreach($errors->all() as $e)
                                             <li>{{ $e }}</li>
                                         @endforeach

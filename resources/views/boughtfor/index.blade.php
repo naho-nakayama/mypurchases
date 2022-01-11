@@ -11,7 +11,7 @@
      <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
         
-        <div class="container">
+        <div class="container cloud">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     
@@ -53,9 +53,9 @@
                 </div>
             </div>
             
-            <div class="row cloud">
+            <!--<div class="row cloud">-->
                 
-            </div>
+            <!--</div>-->
             <div class=row>
                 <div class="text-right">
                     <img src ="https://i.gyazo.com/8a7e7017351a66d1a29d7acb1f299b34.jpg" alt="ペンギンのイラスト" width=46%>    

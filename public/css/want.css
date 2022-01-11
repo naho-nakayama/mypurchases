@@ -33,7 +33,21 @@ h1 {
 }
 
 .display-5 {
-  background: linear-gradient(transparent 70%, #ffbf7f 0%);
+  background: linear-gradient(transparent 60%, #ffbf7f 0%);
+}
+
+.listMenu {
+  background-color: #f3f3f3;
+}
+
+.errorMessages li {
+  list-style: none;
+  /* デフォルトのリストスタイルを消す */
+}
+
+.errorMessages li {
+  color: #F198A4;
+  /* リストのスタイルの色 */
 }
 
 .select_box {
