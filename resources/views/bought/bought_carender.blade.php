@@ -63,7 +63,9 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
-                        
+                            <li class="nav-item">
+                                <a class="nav-link active toWant" href="{{ action('Admin\Want_itemController@index') }}">買いたいものリストへ<i class="arrowIcon_right"></i><i class="arrowIcon_right"></i>︎</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -73,7 +75,6 @@
                 <div class="row">
                     <div class="col-md-10 mx-auto">
                             <h1 class="display-5">買ったものリスト</h1>
-                            <br>
                     </div>
                 </div>
                 
@@ -139,62 +140,57 @@
                     
             
                 <div class="row">
-                
                     <div class="col-md-2 text-left lastMonth">
                         <a class="btn btn-outline-secondary float-left" href="{{ action('Admin\Bought_carenderController@bought_carender_add', array_merge(['date'=> $preFirstDate],$cond_params)) }}">前の月</a>
                     </div>
-                    
                     <div class ="col-md-8 text-center yearAndmonth">
                         <p class ="year">{{$currentYear}}年</p>  
                         <p class ="month">{{$currentMonth}}月</p>
                     </div>
-                    
                     <div class ="col-md-2 text-right nextMonth">
                         @if($nxtFirstDate)
                         <a class="btn btn-outline-secondary Cfloat-right" href="{{ action('Admin\Bought_carenderController@bought_carender_add', array_merge(['date'=> $nxtFirstDate],$cond_params)) }}">次の月</a>
                         @endif
                     </div>
                        
-                        
-                        <table class="table table-bordered carenderTable">
-                          <thead>
-                            <tr class ="weekCreate">
-                              @foreach (['日', '月', '火', '水', '木', '金', '土'] as $dayOfWeek)
-                              <th>{{ $dayOfWeek }}</th>
-                              @endforeach
+                    <table class="table table-bordered carenderTable">
+                      <thead>
+                        <tr class ="weekCreate">
+                          @foreach (['日', '月', '火', '水', '木', '金', '土'] as $dayOfWeek)
+                          <th>{{ $dayOfWeek }}</th>
+                          @endforeach
+                        </tr>
+                      </thead>
+                      
+                      <tbody>
+                        @foreach ($dates as $date)
+                            @if ($date["date"]->dayOfWeek == 0)
+                            <tr>
+                            @endif
+                                <td width = "14.2%" style = "height :160px"
+                                    @if ($date["date"]->month != $currentMonth)
+                                    class="bg-info"
+                                    @endif
+                                >
+                                    <a href= "{{action('Admin\Bought_itemController@index',array_merge(['date'=>$date["date"]->toDateString()],$cond_params))}}"><p>{{ $date["date"]->day }}</p></a>
+                                    @if(count($date["bought_items"]) >2)
+                                        @for($i = 0; $i < 2; $i++)
+                                            <p>{{ $date["bought_items"][$i]->name }}</p>
+                                        @endfor
+                                        <p>他{{count($date["bought_items"])-2}}件</p>
+                                    @else
+                                        @foreach($date["bought_items"] as $bought_item)
+                                             <p>{{ $bought_item->name }}</p>
+                                        @endforeach
+                                        
+                                    @endif
+                                </td>
+                            @if ($date["date"]->dayOfWeek == 6)
                             </tr>
-                          </thead>
-                          
-                          <tbody>
-                            @foreach ($dates as $date)
-                                @if ($date["date"]->dayOfWeek == 0)
-                                <tr>
-                                @endif
-                                    <td width = "14.2%" style = "height :160px"
-                                        @if ($date["date"]->month != $currentMonth)
-                                        class="bg-info"
-                                        @endif
-                                    >
-                                        <a href= "{{action('Admin\Bought_itemController@index',array_merge(['date'=>$date["date"]->toDateString()],$cond_params))}}"><p>{{ $date["date"]->day }}</p></a>
-                                        @if(count($date["bought_items"]) >2)
-                                            @for($i = 0; $i < 2; $i++)
-                                                <p>{{ $date["bought_items"][$i]->name }}</p>
-                                            @endfor
-                                            <p>他{{count($date["bought_items"])-2}}件</p>
-                                        @else
-                                            @foreach($date["bought_items"] as $bought_item)
-                                                 <p>{{ $bought_item->name }}</p>
-                                            @endforeach
-                                            
-                                        @endif
-                                    </td>
-                                @if ($date["date"]->dayOfWeek == 6)
-                                </tr>
-                                @endif
-                            @endforeach
-                          </tbody>
-                        </table>
-                    
+                            @endif
+                        @endforeach
+                      </tbody>
+                    </table>
                 </div>
             </div>
         </div>

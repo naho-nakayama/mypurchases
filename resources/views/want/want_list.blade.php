@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-4">
                             <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Want_itemController@index') }}" method="get">
-                                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Purchases_Sitename_Input') }}" aria-label="Purchases_Sitename_Input" name="cond_name" value="{{ $cond_name }}">
+                                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Want_Sitename_Input') }}" aria-label="Want_Sitename_Input" name="cond_name" value="{{ $cond_name }}">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
                                 {{ csrf_field() }}
                             </form>
@@ -122,7 +122,7 @@
                         <div class= "col-md-8 text-center">
                             
                         </div>
-                        <div class= "col-md-2 text-right">
+                        <div class= "col-md-2 text-right addList">
                             <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Want_itemController@want_add') }}'">リストに追加</button>
                         </div>
                     </div>

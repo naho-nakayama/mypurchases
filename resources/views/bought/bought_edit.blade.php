@@ -27,7 +27,7 @@
         <link href="{{ asset('css/bought.css') }}" rel="stylesheet">
     </head>
     
-    <body>
+    <body class ="boughtList_edit">
         <div id="app">
             <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
                     <div class="container">
@@ -71,9 +71,13 @@
             <main>
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h1 class="display-5">買ったものリストを編集</h1>
+                        </div>
+                    </div>
+                    <br>
+                    <div class ="row">
                         <div class="col-md-10 mx-auto">
-                            <h1 class="display-5">買いたいものリストを編集する</h1>
-                            <br>
                             <form action="{{ action('Admin\Bought_itemController@update') }}" method="post" enctype="multipart/form-data">
                                 @if (count($errors) > 0)
                                     <ul class="errorMessages">
@@ -127,8 +131,8 @@
                                 </div>
                                 
                                 <div class="form-group row">
-                                    <label class="col-md-2" for="image">✔ ものの画像</label>
-                                    <div class="col-md-10">
+                                    <label class="col-md-3" for="image">✔ ものの画像</label>
+                                    <div class="col-md-9">
                                         <input type="file" class="form-control-file" name="image">
                                         <div class="form-text text-info">
                                             設定中: {{ $bought_item_form->image_path }}

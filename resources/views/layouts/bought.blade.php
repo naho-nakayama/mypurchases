@@ -126,10 +126,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class= "col-md-8">
+                        <div class= "col-md-8 text-center">
                             
                         </div>
-                        <div class= "col-md-2 text-right">
+                        <div class= "col-md-2 text-right addList">
                             <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='{{ action('Admin\Bought_itemController@bought_add') }}'">リストに追加</button>
                         </div>
                     </div>

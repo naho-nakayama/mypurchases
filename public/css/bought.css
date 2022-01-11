@@ -4,7 +4,12 @@ body {
   font-family: "\30D2\30E9\30AE\30CE\4E38\30B4\30B7\30C3\30AF", "Noto Sans CJK JP", "\6E38\30B4\30B7\30C3\30AF", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", sans-serif;
   font-size: 15px;
   line-height: 2.5;
+  color: #474747;
   background-color: #FFF;
+  border-left: double 15px #4ec4d3;
+  /*左線*/
+  border-right: double 15px #4ec4d3;
+  /*右線*/
 }
 
 header {
@@ -36,8 +41,31 @@ h1 {
   background: linear-gradient(transparent 60%, #FFFF00 0%);
 }
 
+.addList {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
 .listMenu {
   background-color: #f3f3f3;
+}
+
+.boughtList_add {
+  background: #f5f5f5;
+  /*背景色*/
+  border-left: double 15px #4ec4d3;
+  /*左線*/
+  border-right: double 15px #4ec4d3;
+  /*右線*/
+}
+
+.boughtList_edit {
+  background: #f5f5f5;
+  /*背景色*/
+  border-left: double 15px #4ec4d3;
+  /*左線*/
+  border-right: double 15px #4ec4d3;
+  /*右線*/
 }
 
 .errorMessages li {

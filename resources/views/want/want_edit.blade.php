@@ -27,7 +27,7 @@
         <link href="{{ asset('css/want.css') }}" rel="stylesheet">
     </head>
     
-    <body>
+    <body class= "wantList_edit">
         <div id="app">
             <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
                     <div class="container">
@@ -71,9 +71,13 @@
             <main>
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h1 class="display-5">買いたいものリストを編集</h1>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
                         <div class="col-md-10 mx-auto">
-                            <h1 class="display-5">リストを編集する</h1>
-                            <br>
                             <form action="{{ action('Admin\Want_itemController@update') }}" method="post" enctype="multipart/form-data">
                                  @if (count($errors) > 0)
                                     <ul class= "errorMessages">
@@ -83,7 +87,7 @@
                                     </ul>
                                 @endif
                                 <div class="form-group row">
-                                    <label class="col-md-3" for="name">✔ 買いたいものは？</label>
+                                    <label class="col-md-3" for="name">✔ ものの名前は？</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="name" value="{{ $want_item_form->name }}">
                                     </div>

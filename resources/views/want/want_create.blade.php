@@ -27,7 +27,7 @@
         <link href="{{ asset('css/want.css') }}" rel="stylesheet">
     </head>
     
-    <body>
+    <body class ="wantList_add">
         <div id="app">
             <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
                     <div class="container">
@@ -71,9 +71,13 @@
             <main>
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h1 class="display-5">買いたいものリストに追加</h1>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
                         <div class="col-md-10 mx-auto">
-                            <h1 class="display-5">買いたいものリストに追加する</h1>
-                            <br>
                             <form action="{{ action('Admin\Want_itemController@want_create') }}" method="post" enctype="multipart/form-data">
             
              　{{--Validationでエラーを見つけたときには、Laravel が自動的に $errors という変数にエラーを格納--}}

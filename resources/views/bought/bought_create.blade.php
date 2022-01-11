@@ -27,9 +27,9 @@
         <link href="{{ asset('css/bought.css') }}" rel="stylesheet">
     </head>
     
-    <body>
+    <body class = "boughtList_add">
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light navbar-bought_list">
+            <nav class="navbar navbar-expand-md navbar-light">
                     <div class="container">
                         
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -72,9 +72,13 @@
             <main>
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h1 class="display-5">買ったものリストに追加</h1>
+                        </div>
+                    </div>
+                    <br>
+                    <div class ="row">
                         <div class="col-md-10 mx-auto">
-                            <h1 class="display-5">買ったものリストに追加する</h1>
-                            <br>
                             <form action="{{ action('Admin\Bought_itemController@bought_create') }}" method="post" enctype="multipart/form-data">
             
              　{{--Validationでエラーを見つけたときには、Laravel が自動的に $errors という変数にエラーを格納--}}
