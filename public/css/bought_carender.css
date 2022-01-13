@@ -31,7 +31,6 @@ th {
 .month {
   font-size: 20px;
   display: inline-block;
-  border-top: 2px solid #a8eaff;
 }
 
 .weekCreate {
@@ -45,5 +44,9 @@ th {
 
 .carenderTable a {
   color: black;
+}
+
+.otherDays {
+  background: #eee9e6;
 }
 

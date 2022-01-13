@@ -144,7 +144,7 @@
                         <a class="btn btn-outline-secondary float-left" href="{{ action('Admin\Bought_carenderController@bought_carender_add', array_merge(['date'=> $preFirstDate],$cond_params)) }}">前の月</a>
                     </div>
                     <div class ="col-md-8 text-center yearAndmonth">
-                        <p class ="year">{{$currentYear}}年</p>  
+                        <p class ="year">〜 {{$currentYear}}年 〜</p>  
                         <p class ="month">{{$currentMonth}}月</p>
                     </div>
                     <div class ="col-md-2 text-right nextMonth">
@@ -169,7 +169,7 @@
                             @endif
                                 <td width = "14.2%" style = "height :160px"
                                     @if ($date["date"]->month != $currentMonth)
-                                    class="bg-info"
+                                    class="otherDays"
                                     @endif
                                 >
                                     <a href= "{{action('Admin\Bought_itemController@index',array_merge(['date'=>$date["date"]->toDateString()],$cond_params))}}"><p>{{ $date["date"]->day }}</p></a>

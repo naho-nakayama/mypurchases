@@ -1,9 +1,8 @@
 body {
   background-color:#FFFFFF;
   font-family:"ヒラギノ丸ゴシック","Noto Sans CJK JP","游ゴシック","ヒラギノ角ゴシック",sans-serif;
-
+  
 }
-
 
 .title{
   color:#00cccc;
@@ -19,6 +18,7 @@ border-radius: 50%;
 text-align: center;
 letter-spacing: 0.2em;
 font-size: 14px;
+font-weight:bold;
 background-color: #00cccc;
 }
 
@@ -56,65 +56,17 @@ transform: rotate(45deg);
 .login-body {
   background-color:	#ffffff;
 }
-
-.cloud{
-  width:100%;
-  background-image: url("https://i.gyazo.com/6473282a71d46bd72bd72cf36ec78896.jpg");
-  background-repeat:no-repeat;
-  background-position:bottom 100px;
+//ログインフォームのCSS
+.loginForm{
+  margin-top:45px;
+  background-image:url(https://i.gyazo.com/0826ccfae3ab58d781281e62d61e08f7.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 42%  128% ;
+}
+//ペンギンのイラスト
+.penguin{
+  margin-left: 78%;
 }
 
 
-// .header {
-//   .logo {
-//       width: 120px;
-//       height: 82px;
-//   }
-// }
-
-// .headline {
-//   .caption {
-//     position: relative;
-//     width: 350px;
-//     .image {
-//       img {
-//     width: 100%;
-//       }
-//     }
-//     .title {
-//       width: 100%;
-//       position: absolute;
-//       bottom: 0;
-//       left: 0;
-//       background-color: rgba(0, 0, 0, 0.6);
-//       h1 {
-//     color: #fff;
-//     font-size: 1.2em;
-//       }
-//     }
-//     .body {
-//       font-size: 0.8em;
-//     }
-//   }
-// }
-
-// .posts {
-//   .post {
-//     .date {
-//       font-size: 0.6em;
-//       color: #999999;
-//     }
-//     .title {
-//       font-size: 1.2em;
-//       font-weight: bold;
-//     }
-//     .body {
-//       font-size: 0.8em;
-//     }
-//     .image {
-//       img {
-//     width: 250px;
-//       }
-//     }
-//   }
-// }

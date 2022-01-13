@@ -75,7 +75,7 @@
                             <h1 class="display-5">買いたいものリストを編集</h1>
                         </div>
                     </div>
-                    <br>
+                    '<br>
                     <div class="row">
                         <div class="col-md-10 mx-auto">
                             <form action="{{ action('Admin\Want_itemController@update') }}" method="post" enctype="multipart/form-data">

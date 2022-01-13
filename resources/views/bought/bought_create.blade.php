@@ -79,7 +79,7 @@
                     <br>
                     <div class ="row">
                         <div class="col-md-10 mx-auto">
-                            <form action="{{ action('Admin\Bought_itemController@bought_create') }}" method="post" enctype="multipart/form-data">
+                            <form class ="inputFile" action="{{ action('Admin\Bought_itemController@bought_create') }}" method="post" enctype="multipart/form-data">
             
              　{{--Validationでエラーを見つけたときには、Laravel が自動的に $errors という変数にエラーを格納--}}
             
@@ -140,14 +140,13 @@
                                             <div class="col-md-9">
                                                 <div class="input-group">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" name="image">
+                                                        <input type="file" class="custom-file-input" name="image" id="inputFile">
                                                         <label class="custom-file-label" for="inputFile" data-browse="参照">{{ __('messages.Choose file') }}</label>
                                                     </div>
                                                      
-                                                    <div class="custom-file">
+                                                    <div class="input-group-append">
                                                         <button type="button" class="btn btn-outline-secondary input-group-text" id="inputFileReset">取消</button>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
                                     </div>
@@ -171,5 +170,38 @@
                 </div>
             </main>
         </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+        <script type="text/javascript">
+            window.onload = function(){
+                bsCustomFileInput.init();
+                
+                document.getElementById('inputFileReset').addEventListener('click',function(){
+                    var elem = document.getElementById('inputFile');
+                    elem.value = '';
+                    elem.dispatchEvent(new Event('change'));
+                })
+            }
+            
+           {{-- window.addEventListener('click', function(){
+                // file要素を取得
+                let obj = document.getElementById('inputFile');
+                // クリア
+                obj.value = '';
+            })--}}
+            
+ 
+  
+               {{-- var form = document.forms.boughtListCreate;
+ 
+                form.image.addEventListener('click', function() {
+                  
+                let obj = document.getElementById('inputFile');
+                // クリア
+                obj.value = '';
+                  
+                    }, false);--}}
+                
+        </script>
     </body>
 </html>

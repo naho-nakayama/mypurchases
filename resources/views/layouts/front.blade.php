@@ -29,7 +29,7 @@
     <body>
         <div id="app">  {{-- Vue.js用 Javascriptでエラー出ないため--}}
             <main>
-                <div class="container">
+                <div class="container loginForm">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="balloon">

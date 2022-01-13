@@ -113,7 +113,7 @@ return [
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid zone.',
     'unique' => 'The :attribute has already been taken.',
-    'uploaded' => 'The :attribute failed to upload.',
+    'uploaded' => '※ 申し訳ございませんが、2MB以上の:attributeは登録できません',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
@@ -149,7 +149,8 @@ return [
         'name' => 'ものの名前',
         'price' => '金額',
         'sitename' => 'サイト名',
-        'email' => 'メールアドレス'
+        'email' => 'メールアドレス',
+        'image' => '画像'
         ],
 
 ];

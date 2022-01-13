@@ -31,8 +31,7 @@ th {
 .month{
     font-size:20px;
     display: inline-block;
-    // background: linear-gradient(transparent 50%, #a8eaff 0%);
-    border-top:2px solid #a8eaff;
+    
 }
 //カレンダーの曜日のCSS
 .weekCreate{
@@ -46,7 +45,10 @@ th {
 //カレンダーの日付の数字の表示
 .carenderTable a{
     color:black;
-    
+}
+//カレンダーの表示している月以外の日付のCSS
+.otherDays{
+    background:#eee9e6;
 }
 
 

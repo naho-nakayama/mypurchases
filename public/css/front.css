@@ -19,6 +19,7 @@ body {
   text-align: center;
   letter-spacing: 0.2em;
   font-size: 14px;
+  font-weight: bold;
   background-color: #00cccc;
 }
 
@@ -56,10 +57,15 @@ p {
   background-color: #ffffff;
 }
 
-.cloud {
-  width: 100%;
-  background-image: url("https://i.gyazo.com/6473282a71d46bd72bd72cf36ec78896.jpg");
+.loginForm {
+  margin-top: 45px;
+  background-image: url(https://i.gyazo.com/0826ccfae3ab58d781281e62d61e08f7.jpg);
   background-repeat: no-repeat;
-  background-position: bottom 100px;
+  background-size: 100% auto;
+  background-position: 42% 128%;
+}
+
+.penguin {
+  margin-left: 78%;
 }
 
