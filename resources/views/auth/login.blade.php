@@ -2,7 +2,7 @@
 @section('title', 'リダイレクト画面')
 @section('content')
 
-<div class="login">
+    <div class="login">
         <h3 class="text-center text-white pt-5">Login again form</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
@@ -43,5 +43,6 @@
             </div>
         </div>
     </div>
-    <img class ="penguin" src ="https://i.gyazo.com/15c56b433afc7c34bfc9f6b01b8d60a2.png" alt="ペンギンの後ろ向きのイラスト" width=25%> 
+    <img class ="penguin" src ="https://i.gyazo.com/15c56b433afc7c34bfc9f6b01b8d60a2.png" alt="ペンギンの後ろ向きのイラスト" width=25%>
+    
 @endsection

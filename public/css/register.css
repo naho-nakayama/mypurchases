@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+body {
+  background-color: #FFFFFF;
+  font-family: "\30D2\30E9\30AE\30CE\4E38\30B4\30B7\30C3\30AF", "Noto Sans CJK JP", "\6E38\30B4\30B7\30C3\30AF", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", sans-serif;
+}
+
+.title {
+  color: #00cccc;
+}
+
+.balloon {
+  position: relative;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #00cccc;
+}
+
+p {
+  color: #ffffff;
+}
+
+.balloon::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: 2px;
+  bottom: 2px;
+  border-left: 20px solid #00cccc;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  transform: rotate(45deg);
+}
+
+.Register {
+  position: relative;
+  top: 0;
+}
+
+.login-box {
+  background-color: #ffffff;
+}
+
+.login-header {
+  background-color: #ffffff;
+}
+
+.login-body {
+  background-color: #ffffff;
+}
+
+.RegisterForm {
+  margin-top: 0;
+  background-image: url(https://i.gyazo.com/0826ccfae3ab58d781281e62d61e08f7.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 42% 100%;
+}
+
+.penguin {
+  margin-left: 78%;
+  margin-bottom: 5%;
+}
+

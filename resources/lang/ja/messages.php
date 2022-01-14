@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'User registration' => 'ユーザー新規登録',
     'Login' => 'ログイン',
     'E-Mail Address' => 'メールアドレス',
     'Password' => 'パスワード',
@@ -15,6 +16,7 @@ return [
     'Logout' =>'ログアウト',
     'Choose file' =>'画像を選択',
     'Login again' =>'もう一回ログイン',
+
     
     
 ];
