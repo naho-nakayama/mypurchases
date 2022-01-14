@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Want_item;
 use Auth;
 use App\Category;
+//画像の保存先のS3使用
+use Storage;
+
 
 class Want_itemController extends Controller
 {
@@ -36,10 +39,10 @@ class Want_itemController extends Controller
         $want_items = new Want_item;
         $form = $request->all();
         
-        // create画面のフォームから画像が送信されてきたら、保存して、$want_items->image_path に画像のパスを保存する
+        // create画面のフォームから画像が送信されてきたら、保存して、S3に保存する
         if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $want_items->image_path = basename($path);
+        $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+        $want_items->image_path = Storage::disk('s3')->url($path);
       } else {
           $want_items->image_path = null;
       }
@@ -104,8 +107,8 @@ class Want_itemController extends Controller
       if ($request->remove == 'true') {
           $want_item_form['image_path'] = null;
       } elseif ($request->file('image')) {
-          $path = $request->file('image')->store('public/image');
-          $want_item_form['image_path'] = basename($path);
+          $path = Storage::disk('s3')->putFile('/',$request->file('image'),'public');
+          $want_item_form['image_path'] = Storage::disk('s3')->url($path);
       } else {
           $want_item_form['image_path'] = $want_item->image_path;
       }

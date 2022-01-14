@@ -169,7 +169,7 @@
                                             <td>{{ str_limit($want_item->price, 60) }}</td>
                                             <td>{{ str_limit($want_item->sitename, 60) }}</td>
                                             <td>{{ str_limit($want_item->category->name,60) }}</td>
-                                            <td><image src={{ secure_asset('storage/image/'.$want_item->image_path) }} onerror="this.src='https://i.gyazo.com/4324bf041da262cf2e9bf72eec992e5c.jpg';" alt="画像" width="160" height="110" ></td>
+                                            <td><image src={{ secure_asset($want_item->image_path) }} onerror="this.src='https://i.gyazo.com/4324bf041da262cf2e9bf72eec992e5c.jpg';" alt="画像" width="160" height="110" ></td>
                                            
                                            <td>
                                                 <div>

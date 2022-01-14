@@ -7,11 +7,13 @@ use App\Http\Controllers\Controller;
 
 // 以下を追記することでBought Modelが扱えるようになる
 use App\Bought_item;
-//以下の記述でララベルのAuth機能が使えるように？
+//以下の記述でララベルのAuth機能が使えるように
 use Auth;
 use Carbon\Carbon;
 //カテゴリーのテーブルを使うためモデル名を記述
 use App\Category;
+//画像の保存先のS3使用
+use Storage;
 
 
 class Bought_itemController extends Controller
@@ -40,10 +42,10 @@ class Bought_itemController extends Controller
       $bought_items = new Bought_item;
       $form = $request->all();
       
-      // create画面のフォームから画像が送信されてきたら、保存して、$bought_items->image_path に画像のパスを保存する
+      // create画面のフォームから画像が送信されてきたら、保存して、S3に保存する
       if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $bought_items->image_path = basename($path);
+        $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+        $bought_items->image_path = Storage::disk('s3')->url($path);
       } else {
           $bought_items->image_path = null;
       }
@@ -116,8 +118,8 @@ class Bought_itemController extends Controller
       if ($request->remove == 'true') {
           $bought_item_form['image_path'] = null;
       } elseif ($request->file('image')) {
-          $path = $request->file('image')->store('public/image');
-          $bought_item_form['image_path'] = basename($path);
+          $path = Storage::disk('s3')->putFile('/',$request->file('image'),'public');
+          $bought_item_form['image_path'] = Storage::disk('s3')->url($path);
       } else {
           $bought_item_form['image_path'] = $bought_item->image_path;
       }
