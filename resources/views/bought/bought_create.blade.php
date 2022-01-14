@@ -182,26 +182,6 @@
                     elem.dispatchEvent(new Event('change'));
                 })
             }
-            
-           {{-- window.addEventListener('click', function(){
-                // file要素を取得
-                let obj = document.getElementById('inputFile');
-                // クリア
-                obj.value = '';
-            })--}}
-            
- 
-  
-               {{-- var form = document.forms.boughtListCreate;
- 
-                form.image.addEventListener('click', function() {
-                  
-                let obj = document.getElementById('inputFile');
-                // クリア
-                obj.value = '';
-                  
-                    }, false);--}}
-                
         </script>
     </body>
 </html>

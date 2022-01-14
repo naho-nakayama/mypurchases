@@ -133,14 +133,21 @@
                                 <div class="form-group row">
                                     <label class="col-md-3" for="image">✔ ものの画像</label>
                                     <div class="col-md-9">
-                                        <input type="file" class="form-control-file" name="image">
-                                        <div class="form-text text-info">
-                                            設定中: {{ $bought_item_form->image_path }}
-                                        </div>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
-                                            </label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="image" id="inputFile">
+                                                <label class="custom-file-label" for="inputFile" data-browse="参照">
+                                                      @if(isset($bought_item_form->image_path))
+                                                        {{ $bought_item_form->image_path }}
+                                                      @else
+                                                        {{ __('messages.Choose file') }}
+                                                      @endif
+                                                </label>
+                                            </div>
+                                             
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-outline-secondary input-group-text" id="inputFileReset">取消</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -165,5 +172,18 @@
                 </div>
             </main>
         </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+        <script type="text/javascript">
+            window.onload = function(){
+                bsCustomFileInput.init();
+                
+                document.getElementById('inputFileReset').addEventListener('click',function(){
+                    var elem = document.getElementById('inputFile');
+                    elem.value = '';
+                    elem.dispatchEvent(new Event('change'));
+                })
+            }
+        </script>
     </body>
 </html>

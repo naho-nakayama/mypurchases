@@ -43,5 +43,5 @@
             </div>
         </div>
     </div>
-    <img class ="penguin" src ="https://i.gyazo.com/bd393b9d1aab11b3e0ee4e255f78ebac.png" alt="ペンギンのイラスト" width=25%> 
+    <img class ="penguin" src ="https://i.gyazo.com/15c56b433afc7c34bfc9f6b01b8d60a2.png" alt="ペンギンの後ろ向きのイラスト" width=25%> 
 @endsection

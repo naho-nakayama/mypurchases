@@ -12,6 +12,7 @@ class Want_item extends Model
         'name' => 'required',
         'price' => 'required',
         'sitename' => 'required',
+        'image' => 'max:2048'  //アップロードできるファイルサイズを２MBまでにする
        
     );
     
