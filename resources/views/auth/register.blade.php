@@ -89,13 +89,6 @@
                                             <input type="text" name="password_confirmation" id="password_confirmation" class="form-control" required autocomplete="new-password">
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <div class ="text-left">
-                                                <label for="remember-me" class="text-info"><span>{{ __('messages.Remember Me') }}</span> 
-                                                <span><input id="remember-me" name="remember-me" type="checkbox" {{ old('remember') ? 'checked' : '' }}></span></label><br>
-                                                <input type="submit" name="{{ __('messages.Login') }}" class="btn btn-info btn-md" value="{{ __('messages.Login') }}">
-                                            </div>
-                                        </div>
                                         
                                         <div class="form-group">
                                             <div id="register-link" class="text-right">
