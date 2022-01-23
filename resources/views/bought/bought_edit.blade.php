@@ -176,10 +176,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
         <script type="text/javascript">
             window.onload = function(){
-                bsCustomFileInput.init();
-                
+                //bsCustomFileInput.init();
+                console.log(1111);
                 document.getElementById('inputFileReset').addEventListener('click',function(){
                     var elem = document.getElementById('inputFile');
+                    console.log(2);
                     elem.value = '';
                     elem.dispatchEvent(new Event('change'));
                 })

@@ -40,6 +40,12 @@ h1{
 .display-5{
 background:linear-gradient(transparent 60%, #ffbf7f 0%);
 }
+
+//検索窓のCSS
+.serch{
+   display: flex;
+}
+
 //買ったものリストのリストに追加ボタンのCSS
 .addList{
   margin-top:0;

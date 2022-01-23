@@ -75,12 +75,16 @@
                     </div>
                 
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-6">
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Want_itemController@index') }}" method="get">
-                                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Want_Sitename_Input') }}" aria-label="Want_Sitename_Input" name="cond_name" value="{{ $cond_name }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
+                                <div class="serch">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Want_Name_Input') }}" aria-label="Want_Name_Input" name="cond_name" value="{{ $cond_name }}">
+                                    or
+                                    <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Want_Sitename_Input') }}" aria-label="Want_Sitename_Input" name="cond_sitename" value="{{ $cond_sitename }}">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
+                                </div>
                                 {{ csrf_field() }}
                             </form>
                         </div>

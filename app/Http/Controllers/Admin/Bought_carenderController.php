@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB; //DB::の書き方を使うためのもの
 use App\Bought_item;
 
+//以下の記述でララベルのAuth機能が使えるように
+use Auth;
+
 class Bought_carenderController extends Controller
 {
     public function bought_carender_add(Request $request)
@@ -19,11 +22,14 @@ class Bought_carenderController extends Controller
         }
         
         //以下カレンダーでのカテゴリー、キーワード検索
-        $query = Bought_item::query();
+        $query = Auth::user()->bought_items();
         $cond_params = []; //検索条件を保持してリンクに渡すための連想配列
         if($request->cond_name){
-            $query->where('name','like','%'. $request->cond_name.'%')->orWhere('sitename','like','%'.$request->cond_name.'%');
+            $query->where('name','like','%'. $request->cond_name.'%');
             $cond_params["cond_name"] = $request->cond_name;
+        }elseif($request->cond_sitename){
+            $query->where('sitename','like','%'.$request->cond_sitename.'%');
+            $cond_params["cond_sitename"] = $request->cond_sitename;    
         }elseif($request->cid){
             $query->where('category_id',$request->cid);
             $cond_params["cid"] = $request->cid;

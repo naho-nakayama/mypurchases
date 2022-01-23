@@ -43,7 +43,7 @@ Route::group(['prefix' => 'bought', 'middleware' => 'auth'], function() {
     Route::get('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth'); //カレンダー表示のアクション
     
     Route::get('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth');
-    Route::post('bought_carender', 'Admin\Bought_carenderController@bought_carender')->middleware('auth');
+    Route::post('bought_carender', 'Admin\Bought_carenderController@bought_carender_add')->middleware('auth');
 });
 
 Route::group(['prefix' => 'want', 'middleware' => 'auth'], function() {

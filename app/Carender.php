@@ -17,4 +17,7 @@ class Carender extends Model
 		return $this->carbon->copy()->subMonthsNoOverflow()->format('Y-m');
 	}
     
+    
+    
+    
 }

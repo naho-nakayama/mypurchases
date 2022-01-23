@@ -41,6 +41,10 @@ h1 {
   background: linear-gradient(transparent 60%, #ffbf7f 0%);
 }
 
+.serch {
+  display: flex;
+}
+
 .addList {
   margin-top: 0;
   margin-bottom: 10px;

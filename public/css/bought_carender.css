@@ -1,3 +1,7 @@
+.serch {
+  display: flex;
+}
+
 th {
   height: 30px;
   text-align: center;

@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    //ユーザー情報とリストの紐付け
+    public function bought_items(){
+        return $this->hasMany('App\Bought_item');
+    }
+    
+    public function want_items(){
+        return $this->hasMany('App\Want_item');
+    }
+    
 }

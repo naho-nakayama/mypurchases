@@ -75,12 +75,16 @@
                     </div>
                 
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-6">
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_itemController@index') }}" method="get">
-                                <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Purchases_Sitename_Input') }}" aria-label="Purchases_Sitename_Input" name="cond_name" value="{{ $cond_name }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
+                                <div class="serch">
+                                    <input class="form-control mr-sm-2 cond_name" type="search" placeholder="{{ __('messages.Purchases_Input') }}" aria-label="Purchases_Input" name="cond_name" value="{{ $cond_name }}">
+                                    or
+                                    <input class="form-control mr-sm-2" type="search" placeholder="{{ __('messages.Sitename_Input') }}" aria-label="Sitename_Input" name="cond_sitename" value="{{ $cond_sitename }}">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">{{ __('messages.Search') }}</button>
+                                </div>
                                 {{ csrf_field() }}
                             </form>
                         </div>
@@ -94,7 +98,7 @@
                             <form class="form-inline my-2 my-lg-0" action="{{ action('Admin\Bought_itemController@index') }}" method="get">
                                 <div class="dropdown">
                                     <button class="btn btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                    カテゴリ検索
+                                    カテゴリで検索
                                     </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="{{ action('Admin\Bought_itemController@index') . '?cid=1'}}">衣類</a>

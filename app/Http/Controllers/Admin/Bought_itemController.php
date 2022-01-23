@@ -73,24 +73,31 @@ class Bought_itemController extends Controller
       public function index(Request $request)
   {
       $cond_name = $request->cond_name;
+      $cond_sitename = $request->cond_sitename;
       $cid = $request->cid;
       $cond_day = $request->date;
+      
       if ($cond_name != '') {
-          // キーワード検索されたら検索結果を取得する
-            $posts = Bought_item::where('name','like','%'. $cond_name.'%')->orWhere('sitename','like','%'.$cond_name.'%')->orderBy('created_at','desc')->paginate(10);
-      } else if ($cid != ''){
+          // 買ったものの名前検索されたら検索結果を取得する
+            $posts = Auth::user()->bought_items()->where('name','like','%'. $cond_name.'%')->orderBy('created_at','desc')->paginate(10);
+           
+      }else if ($cond_sitename != ''){
+          // 買ったもののサイト名検索されたら検索結果を取得する
+            $posts = Auth::user()->bought_items()->where('sitename','like','%'.$cond_sitename.'%')->orderBy('created_at','desc')->paginate(10);
+            
+      }else if ($cid != ''){
           //カテゴリー検索されたら検索結果取得
-            $posts = Bought_item::where('category_id',$cid)->orderBy('created_at','desc')->paginate(10);
+            $posts = Auth::user()->bought_items()->where('category_id',$cid)->orderBy('created_at','desc')->paginate(10);
       } else if($cond_day != ''){
           //カレンダーから日付で検索されたら該当のリスト
-            $posts = Bought_item::where('date', $cond_day)->paginate(10);
+            $posts = Auth::user()->bought_items()->where('date', $cond_day)->paginate(10);
       
       } else{
-            $posts = Bought_item::orderBy('created_at','desc')->paginate(10);
+            $posts = Auth::user()->bought_items()->orderBy('created_at','desc')->paginate(10);
       }
       
       
-      return view('bought.bought_list', ['posts' => $posts, 'cond_name' => $cond_name]);
+      return view('bought.bought_list', ['posts' => $posts, 'cond_name' => $cond_name,'cond_sitename'=> $cond_sitename ]);
   }
   
   
@@ -112,9 +119,9 @@ class Bought_itemController extends Controller
       // Validationをかける
       $this->validate($request, Bought_item::$rules);
       // Bought_item Modelからデータを検索して取得する
-      $bought_item = Bought_item::find($request->id);
+      $bought_item = Auth::user()->bought_items()->find($request->id);
       // 送信されてきたフォームデータを格納する
-      $bought_item_form = $request->all();
+      $bought_item_form = Auth::user()->bought_items()->$request->all();
       if ($request->remove == 'true') {
           $bought_item_form['image_path'] = null;
       } elseif ($request->file('image')) {
@@ -136,7 +143,7 @@ class Bought_itemController extends Controller
   public function delete(Request $request)
   {
       // 該当するBought_item Modelを取得
-      $bought_item = Bought_item::find($request->id);
+      $bought_item =  Auth::user()->bought_items()->find($request->id);
       // 削除する
       $bought_item->delete();
       return redirect('bought/bought_list');
