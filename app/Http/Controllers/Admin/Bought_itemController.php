@@ -95,7 +95,7 @@ class Bought_itemController extends Controller
       } else{
             $posts = Auth::user()->bought_items()->orderBy('created_at','desc')->paginate(10);
       }
-      ddd($posts);
+      dd($posts);
       
       return view('bought.bought_list', ['posts' => $posts, 'cond_name' => $cond_name,'cond_sitename'=> $cond_sitename ]);
   }
