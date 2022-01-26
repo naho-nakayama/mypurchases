@@ -121,21 +121,22 @@ class Bought_itemController extends Controller
       // Bought_item Modelからデータを検索して取得する
       $bought_item = Auth::user()->bought_items()->find($request->id);
       // 送信されてきたフォームデータを格納する
-      $bought_item_form = Auth::user()->bought_items()->$request->all();
-      if ($request->remove == 'true') {
-          $bought_item_form['image_path'] = null;
-      } elseif ($request->file('image')) {
+      // $bought_item_form = Auth::user()->bought_items()->$request->all();
+      // if ($request->remove == 'true') {
+      //     $bought_item_form['image_path'] = null;
+      if ($request->file('image')) {
           $path = Storage::disk('s3')->putFile('/',$request->file('image'),'public');
-          $bought_item_form['image_path'] = Storage::disk('s3')->url($path);
+          $image_path= Storage::disk('s3')->url($path);
       } else {
-          $bought_item_form['image_path'] = $bought_item->image_path;
+          $image_path = $bought_item->image_path;
       }
-
-      unset($bought_item_form['image']);
-      unset($bought_item_form['remove']);
-      unset($bought_item_form['_token']);
-      // 該当するデータを上書きして保存する
-      $bought_item->fill($bought_item_form)->save();
+     $bought_item->update(['image_path'=>$image_path]);
+     
+      // unset($bought_item_form['image']);
+      // unset($bought_item_form['remove']);
+      // unset($bought_item_form['_token']);
+      // // 該当するデータを上書きして保存する
+      // $bought_item->fill($bought_item_form)->save();
       return redirect('bought/bought_list');
   }
   
