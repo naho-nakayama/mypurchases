@@ -24,6 +24,7 @@ class Bought_carenderController extends Controller
         //以下カレンダーでのカテゴリー、キーワード検索
         $query = Auth::user()->bought_items();
         $cond_params = []; //検索条件を保持してリンクに渡すための連想配列
+        
         if($request->cond_name){
             $query->where('name','like','%'. $request->cond_name.'%');
             $cond_params["cond_name"] = $request->cond_name;
@@ -33,12 +34,10 @@ class Bought_carenderController extends Controller
         }elseif($request->cid){
             $query->where('category_id',$request->cid);
             $cond_params["cid"] = $request->cid;
-        }else{
-            $query = Bought_item::query();
         }
+        
         $bought_items = $query->get();
-        // dd($bought_items,$request->cond_name);
-        //dd($days_in_calendar_month);//31日入ってる
+
         //カレンダー生成・データを持ってくる
         $fistday_in_month = Carbon::create($now->year, $now->month, "1");
         $lastday_in_month =  Carbon::create($now->year, $now->month, $fistday_in_month->daysInMonth);
