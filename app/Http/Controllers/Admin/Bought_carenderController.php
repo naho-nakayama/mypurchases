@@ -21,10 +21,10 @@ class Bought_carenderController extends Controller
             $now = Carbon::now();
         }
         
-        //以下カレンダーでのカテゴリー、キーワード検索
+        //以下カレンダーでの買ったものの表示
         $query = Auth::user()->bought_items();
         $cond_params = []; //検索条件を保持してリンクに渡すための連想配列
-        
+         //買ったものの名前、サイト名、カテゴリで検索する処理
         if($request->cond_name){
             $query->where('name','like','%'. $request->cond_name.'%');
             $cond_params["cond_name"] = $request->cond_name;
