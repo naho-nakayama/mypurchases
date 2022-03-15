@@ -105,7 +105,7 @@ class Bought_itemController extends Controller
   public function edit(Request $request)
   {
       // Bought_item Modelからデータを取得する
-      $bought_item = Bought_item::find($request->id);
+      $bought_item = Auth::user()->bought_items()->find($request->id); //Bought_item::find($request->id);から変更
       //categoriesテーブルからCategoryモデルを使ってデータを全て取得して変数に代入
       $category = Category::all();
       if (empty($bought_item)) {
@@ -121,14 +121,21 @@ class Bought_itemController extends Controller
       // Bought_item Modelからデータを検索して取得する
       $bought_item = Auth::user()->bought_items()->find($request->id);
       // 送信されてきたフォームデータを格納する
-      if ($request->file('image')) {
+      $bought_item_form = $request->all();
+      if ($request->remove == 'true') {
+          $bought_item_form['image_path'] = null;
+      } elseif ($request->file('image')) {
           $path = Storage::disk('s3')->putFile('/',$request->file('image'),'public');
-          $image_path= Storage::disk('s3')->url($path);
+          $bought_item_form['image_path'] = Storage::disk('s3')->url($path);
       } else {
-          $image_path = $bought_item->image_path;
+          $bought_item_form['image_path'] = $bought_item->image_path;
       }
-     $bought_item->update(['image_path'=>$image_path]);
-     
+
+      unset($bought_item_form['image']);
+      unset($bought_item_form['remove']);
+      unset($bought_item_form['_token']);
+      // 該当するデータを上書きして保存する
+      $bought_item->fill($bought_item_form)->save();
       return redirect('bought/bought_list');
   }
   
